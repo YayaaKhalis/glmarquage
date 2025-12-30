@@ -24,7 +24,7 @@ export default function Footer() {
                 href="https://instagram.com/glmarquage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-orange-600 transition-all group border border-white/10"
+                className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-400 transition-all group border border-white/10"
               >
                 <span className="text-2xl">📸</span>
               </a>
@@ -36,22 +36,22 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-8">Nos Services</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/signalisation-horizontale" className="text-slate-400 hover:text-orange-600 transition-colors text-lg font-light">
+                <Link href="/signalisation-horizontale" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
                   Signalisation Horizontale
                 </Link>
               </li>
               <li>
-                <Link href="/signalisation-verticale" className="text-slate-400 hover:text-orange-600 transition-colors text-lg font-light">
+                <Link href="/signalisation-verticale" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
                   Signalisation Verticale
                 </Link>
               </li>
               <li>
-                <Link href="/mobilier-urbain" className="text-slate-400 hover:text-orange-600 transition-colors text-lg font-light">
+                <Link href="/mobilier-urbain" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
                   Mobilier Urbain
                 </Link>
               </li>
               <li>
-                <Link href="/#realisations" className="text-slate-400 hover:text-orange-600 transition-colors text-lg font-light">
+                <Link href="/#realisations" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
                   Nos Réalisations
                 </Link>
               </li>
@@ -64,13 +64,13 @@ export default function Footer() {
             <ul className="space-y-5">
               <li className="flex items-start gap-3">
                 <span className="text-2xl">📞</span>
-                <a href="tel:0698741199" className="text-slate-400 hover:text-orange-600 transition-colors text-lg font-light">
+                <a href="tel:0698741199" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
                   06 98 74 11 99
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl">📧</span>
-                <a href="mailto:glmarquage@gmail.com" className="text-slate-400 hover:text-orange-600 transition-colors break-all text-lg font-light">
+                <a href="mailto:glmarquage@gmail.com" className="text-slate-400 hover:text-yellow-400 transition-colors break-all text-lg font-light">
                   glmarquage@gmail.com
                 </a>
               </li>
@@ -88,23 +88,23 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-8">Zone d&apos;Intervention</h3>
             <ul className="space-y-3 text-slate-400">
               <li className="flex items-center gap-3 text-lg font-light">
-                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
                 <span>Savoie (73)</span>
               </li>
               <li className="flex items-center gap-3 text-lg font-light">
-                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
                 <span>Haute-Savoie (74)</span>
               </li>
               <li className="flex items-center gap-3 text-lg font-light">
-                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
                 <span>Ain (01)</span>
               </li>
               <li className="flex items-center gap-3 text-lg font-light">
-                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
                 <span>Isère (38)</span>
               </li>
               <li className="flex items-center gap-3 text-lg font-light">
-                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
                 <span>Suisse - Genève</span>
               </li>
             </ul>

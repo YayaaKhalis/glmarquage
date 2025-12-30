@@ -62,7 +62,7 @@ export default function Header() {
               <div key={item.name} className="relative group">
                 {item.submenu ? (
                   <>
-                    <button className="text-black hover:text-orange-600 font-medium transition-colors flex items-center gap-1">
+                    <button className="text-black hover:text-yellow-500 font-medium transition-colors flex items-center gap-1">
                       {item.name}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -73,7 +73,7 @@ export default function Header() {
                         <Link
                           key={subitem.name}
                           href={subitem.href}
-                          className="block px-6 py-4 text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-colors font-medium"
+                          className="block px-6 py-4 text-slate-700 hover:bg-yellow-50 hover:text-yellow-600 transition-colors font-medium"
                         >
                           {subitem.name}
                         </Link>
@@ -83,7 +83,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-black hover:text-orange-600 font-medium transition-colors"
+                    className="text-black hover:text-yellow-500 font-medium transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -92,7 +92,7 @@ export default function Header() {
             ))}
             <Link
               href="/#contact"
-              className="px-8 py-3 bg-black text-white rounded-full hover:bg-orange-600 transition-all font-semibold shadow-lg hover:shadow-xl"
+              className="px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-300 transition-all font-bold shadow-lg hover:shadow-xl"
             >
               Devis Gratuit
             </Link>
@@ -129,7 +129,7 @@ export default function Header() {
                       <Link
                         key={subitem.name}
                         href={subitem.href}
-                        className="block px-8 py-3 text-slate-600 hover:text-orange-600 hover:bg-slate-50 transition-colors"
+                        className="block px-8 py-3 text-slate-600 hover:text-yellow-600 hover:bg-yellow-50 transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {subitem.name}
@@ -139,7 +139,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="block px-4 py-3 text-black hover:text-orange-600 hover:bg-slate-50 transition-colors font-semibold"
+                    className="block px-4 py-3 text-black hover:text-yellow-600 hover:bg-yellow-50 transition-colors font-semibold"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -149,7 +149,7 @@ export default function Header() {
             ))}
             <Link
               href="/#contact"
-              className="block mx-4 mt-4 px-8 py-4 bg-black text-white text-center rounded-full hover:bg-orange-600 transition-all font-semibold shadow-lg"
+              className="block mx-4 mt-4 px-8 py-4 bg-yellow-400 text-black text-center rounded-full hover:bg-yellow-300 transition-all font-bold shadow-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
               Devis Gratuit
