@@ -6,6 +6,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import Grid3D from '@/components/3d/Grid3D';
+import RoadElements3D from '@/components/3d/RoadElements3D';
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -21,21 +23,21 @@ export default function Home() {
     {
       title: 'Signalisation Horizontale',
       description: 'Expert en marquage au sol depuis plus de 15 ans. Nous réalisons tous types de marquages routiers : lignes continues et discontinues, passages piétons, zébras, places de stationnement, marquage de zones industrielles et logistiques. Matériaux certifiés NF et conformes aux normes EN 1436.',
-      image: '/IMG_0133.jpeg',
+      image: '/IMG_0134.jpeg',
       href: '/signalisation-horizontale',
       number: '01'
     },
     {
       title: 'Signalisation Verticale',
       description: 'Installation complète de panneaux de signalisation routière, totems de ville, potelets de sécurité et mobilier de signalisation. Fourniture et pose de panneaux conformes au code de la route. Expertise en signalisation permanente et temporaire pour chantiers.',
-      image: '/IMG_2363.jpeg',
+      image: '/singalisationverticale.jpg',
       href: '/signalisation-verticale',
       number: '02'
     },
     {
       title: 'Mobilier Urbain',
       description: 'Solutions complètes d\'aménagement urbain : poubelles publiques, bancs, abris-bus, barrières, arceaux vélos. Installation de mobilier urbain durable et design pour collectivités et entreprises. Matériaux résistants aux intempéries et au vandalisme.',
-      image: '/IMG_5564.jpg',
+      image: '/mobilierUrbain.png',
       href: '/mobilier-urbain',
       number: '03'
     }
@@ -88,14 +90,18 @@ export default function Home() {
 
       {/* Hero Section - Bold Yellow & Black */}
       <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-        {/* Background Elements */}
+        {/* Background Elements - Très subtils */}
         <motion.div
           style={{ y }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute top-20 right-0 w-[800px] h-[800px] bg-gradient-to-br from-yellow-400/20 to-yellow-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-yellow-300/15 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-20 right-0 w-[800px] h-[800px] bg-gradient-to-br from-white/5 to-white/2 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-white/3 to-transparent rounded-full blur-3xl"></div>
         </motion.div>
+
+        {/* Grille 3D et éléments routiers */}
+        <Grid3D />
+        <RoadElements3D />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 py-32">
           <motion.div
@@ -262,8 +268,8 @@ export default function Home() {
             >
               <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/IMG_2327.jpeg"
-                  alt="GL Marquage - Expert en signalisation routière"
+                  src="/vehicule glm.png"
+                  alt="Véhicule GL Marquage - Flotte professionnelle"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -403,17 +409,77 @@ export default function Home() {
       </section>
 
       {/* Zone d'Intervention - Dark Section */}
-      <section className="py-32 bg-black text-white relative overflow-hidden">
-        {/* Grid Background */}
-        <div className="absolute inset-0 opacity-5">
-          <div
+      <section className="py-32 bg-black text-white relative overflow-hidden" style={{ perspective: '1000px' }}>
+        {/* Grille 3D en perspective */}
+        <div className="absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
+          <motion.div
             className="absolute inset-0"
             style={{
-              backgroundImage: 'linear-gradient(rgba(255,214,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,214,0,.3) 1px, transparent 1px)',
-              backgroundSize: '50px 50px'
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 214, 0, 0.15) 2px, transparent 2px),
+                linear-gradient(to bottom, rgba(255, 214, 0, 0.15) 2px, transparent 2px)
+              `,
+              backgroundSize: '80px 80px',
+              transform: 'rotateX(75deg) translateZ(-300px)',
+              transformOrigin: 'center center',
             }}
-          ></div>
+            animate={{
+              backgroundPosition: ['0px 0px', '80px 80px'],
+            }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+
+          {/* Lignes de route en perspective */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute bg-yellow-400/20"
+              style={{
+                left: `${12.5 * (i + 1)}%`,
+                width: '3px',
+                height: '100%',
+                transformOrigin: 'bottom center',
+                transform: `rotateX(75deg) scaleY(${1 + i * 0.2})`,
+              }}
+              animate={{
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.3,
+              }}
+            />
+          ))}
         </div>
+
+        {/* Particules 3D flottantes */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-3 h-3 bg-yellow-400 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -150, 0],
+              x: [0, Math.random() * 100 - 50, 0],
+              scale: [0, 1.5, 0],
+              opacity: [0, 0.6, 0],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 8,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           {/* Section Header */}
@@ -507,7 +573,7 @@ export default function Home() {
           </motion.div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {realisations.map((image, index) => (
               <motion.div
                 key={index}
@@ -533,6 +599,21 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* CTA to full portfolio */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Link
+              href="/realisations"
+              className="inline-block px-12 py-5 bg-linear-to-r from-yellow-400 to-yellow-500 text-black text-xl font-bold rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 hover:scale-105"
+            >
+              Voir Toutes Nos Réalisations
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -586,12 +667,27 @@ export default function Home() {
             ))}
           </motion.div>
 
-          {/* Form */}
+          {/* CTA to Contact Page */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-3xl p-12 shadow-xl border-2 border-gray-100"
+            className="text-center"
+          >
+            <Link
+              href="/contact"
+              className="inline-block px-12 py-5 bg-linear-to-r from-yellow-400 to-yellow-500 text-black text-xl font-bold rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 hover:scale-105"
+            >
+              Contactez-Nous
+            </Link>
+          </motion.div>
+
+          {/* Hidden Form - Keep for structure */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="hidden bg-white rounded-3xl p-12 shadow-xl border-2 border-gray-100"
           >
             <form className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">

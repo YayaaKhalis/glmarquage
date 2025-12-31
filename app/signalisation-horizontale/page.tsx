@@ -313,8 +313,8 @@ export default function SignalisationHorizontale() {
 
             <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/IMG_2327.jpeg"
-                alt="Qualité marquage GL Marquage"
+                src="/zonepieton.jpeg"
+                alt="Zone piéton - Marquage au sol GL Marquage"
                 fill
                 className="object-cover"
               />
