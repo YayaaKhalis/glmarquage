@@ -1,63 +1,72 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-
-export const metadata = {
-  title: 'Signalisation Verticale | Panneaux & Totems - GL Marquage Savoie',
-  description: 'Installation de panneaux de signalisation, totems de ville et potelets auto-relevants. Solutions complètes en Savoie, Haute-Savoie et Rhône-Alpes. Devis gratuit.',
-  keywords: ['signalisation verticale', 'panneaux routiers', 'totems de ville', 'potelets', 'Savoie', 'Chambéry', 'Annecy'],
-  openGraph: {
-    title: 'Signalisation Verticale - Panneaux & Totems de Ville',
-    description: 'Installation professionnelle de panneaux de signalisation et totems en Rhône-Alpes',
-    locale: 'fr_FR',
-  },
-};
 
 export default function SignalisationVerticale() {
   const services = [
     {
       title: 'Panneaux de Signalisation',
-      description: 'Installation complète de panneaux routiers et signalisation directionnelle conforme aux réglementations.',
-      features: [
-        'Panneaux de police (interdiction, obligation, danger)',
-        'Panneaux directionnels et d\'information',
+      description: 'Installation complète de panneaux routiers et directionnels conformes au code de la route. Expertise en signalisation permanente et temporaire.',
+      details: [
+        'Panneaux de police (interdiction, obligation)',
+        'Panneaux de danger et priorité',
+        'Panneaux directionnels et localisation',
         'Signalisation temporaire de chantier',
-        'Panneaux personnalisés sur-mesure',
-        'Poteaux et supports adaptés'
+        'Panneaux personnalisés sur mesure'
       ],
-      applications: ['Communes', 'Routes départementales', 'Zones d\'activité', 'Sites privés'],
-      image: '/IMG_2363.jpeg',
-      icon: '🚸'
+      image: '/singalisationverticale.jpg',
+      icon: '🚦'
     },
     {
       title: 'Totems de Ville',
-      description: 'Signalétique urbaine élégante et fonctionnelle pour valoriser votre territoire.',
-      features: [
+      description: 'Signalétique urbaine et directionnelle pour collectivités. Solutions modernes pour l\'orientation et l\'information du public.',
+      details: [
         'Totems d\'entrée de ville',
         'Totems directionnels piétons',
         'Signalétique patrimoniale',
         'Jalonnement touristique',
         'Panneaux d\'information municipale'
       ],
-      applications: ['Mairies', 'Offices de tourisme', 'Zones piétonnes', 'Centres-villes'],
-      image: '/IMG_5576.jpg',
-      icon: '🏛️'
+      image: '/singalisationverticale.jpg',
+      icon: '🗼'
     },
     {
       title: 'Potelets Auto-relevants',
-      description: 'Solutions souples et résistantes pour la protection des espaces piétons sans dommages.',
-      features: [
+      description: 'Solutions souples pour la protection des espaces piétons et cyclistes. Résistance aux impacts véhicules avec retour automatique.',
+      details: [
         'Potelets flexibles anti-chocs',
         'Potelets à mémoire de forme',
-        'Résistance aux impacts véhicules',
-        'Installation rapide et facile',
+        'Protection zones piétonnes',
+        'Installation rapide sans génie civil',
         'Maintenance minimale'
       ],
-      applications: ['Zones piétonnes', 'Centres-villes', 'Parkings', 'Espaces publics'],
-      image: '/IMG_8601.jpeg',
-      icon: '⚡'
+      image: '/singalisationverticale.jpg',
+      icon: '🚧'
+    },
+    {
+      title: 'Supports & Fixations',
+      description: 'Fourniture et pose de supports adaptés pour tous types de panneaux. Installation sur sol, mur ou portique.',
+      details: [
+        'Poteaux acier et aluminium',
+        'Fixations murales',
+        'Portiques de signalisation',
+        'Scellement chimique et béton',
+        'Remplacement poteaux endommagés'
+      ],
+      image: '/singalisationverticale.jpg',
+      icon: '🔧'
     }
+  ];
+
+  const zones = [
+    { code: '73', name: 'Savoie', primary: true, ville: 'Chambéry, Aix-les-Bains, Albertville' },
+    { code: '74', name: 'Haute-Savoie', primary: true, ville: 'Annecy, Annemasse, Thonon' },
+    { code: '01', name: 'Ain', primary: false, ville: 'Bourg-en-Bresse, Oyonnax' },
+    { code: '38', name: 'Isère', primary: false, ville: 'Grenoble, Voiron' }
   ];
 
   return (
@@ -65,206 +74,300 @@ export default function SignalisationVerticale() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center justify-center bg-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/IMG_2363.jpeg"
-            alt="Signalisation Verticale GL Marquage"
+            src="/singalisationverticale.jpg"
+            alt="Signalisation verticale - GL Marquage"
             fill
-            className="object-cover"
+            className="object-cover opacity-40"
             priority
-            quality={90}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a]/90 to-[#1a1a1a]/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <nav className="mb-6 flex justify-center">
-            <ol className="flex items-center space-x-2 text-sm text-gray-300">
-              <li><Link href="/" className="hover:text-[#d4a32b]">Accueil</Link></li>
-              <li><span>/</span></li>
-              <li className="text-[#d4a32b] font-semibold">Signalisation Verticale</li>
-            </ol>
-          </nav>
-
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
-            Signalisation
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#d4a32b] to-[#e5b93a]">
-              Verticale
-            </span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Installation de panneaux, totems de ville et potelets
-            pour la sécurité et l&apos;orientation de vos espaces
-          </p>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#d4a32b] to-[#e5b93a] text-[#1a1a1a] rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-all"
+        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            Demander un Devis Gratuit
-          </a>
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-yellow-400/10 border border-yellow-400/20 backdrop-blur-xl mb-8">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+              <span className="text-yellow-400 font-bold text-sm tracking-wide uppercase">
+                Nos Services
+              </span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+              Signalisation
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500">
+                Verticale
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Spécialiste de la <strong className="text-yellow-400">pose de panneaux</strong> en Savoie et Rhône-Alpes.
+              Installation de <strong className="text-yellow-400">totems, potelets et signalétique</strong> pour collectivités et professionnels.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-2xl font-black text-base hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30"
+              >
+                Demander un devis gratuit
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <a
+                href="tel:0698741199"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-2xl border-2 border-white/20 text-white rounded-2xl font-black text-base hover:bg-white/10 hover:border-yellow-400/50 transition-all"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                06 98 74 11 99
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-[#d4a32b] font-bold text-sm uppercase tracking-wider">Nos Solutions</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mt-4 mb-6">
-              Gamme Complète de Signalisation
+      <section className="py-32 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-black mb-6">
+              Nos Solutions Verticales
             </h2>
-            <p className="text-xl text-gray-600">
-              Des solutions professionnelles pour tous vos besoins
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Fourniture et installation complète de signalisation verticale pour tous vos projets
             </p>
-          </div>
+          </motion.div>
 
-          <div className="space-y-16">
+          <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
               >
-                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                  <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl group">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-6 left-6 text-6xl">
+                    {service.icon}
                   </div>
                 </div>
 
-                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#d4a32b] to-[#e5b93a] rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-3xl font-black text-[#1a1a1a]">{service.title}</h3>
-                  </div>
-
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                <div className="p-8">
+                  <h3 className="text-3xl font-black text-black mb-4 group-hover:text-yellow-600 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
                     {service.description}
                   </p>
 
-                  <div className="mb-6">
-                    <h4 className="text-sm font-bold text-[#1a1a1a] uppercase tracking-wider mb-4">
-                      Nos Prestations
-                    </h4>
-                    <ul className="grid gap-3">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <svg className="w-6 h-6 text-[#d4a32b] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <h4 className="text-sm font-bold text-[#1a1a1a] uppercase tracking-wider mb-3">
-                      Clients Types
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {service.applications.map((app, idx) => (
-                        <span
-                          key={idx}
-                          className="px-4 py-2 bg-white border border-[#d4a32b]/20 text-[#1a1a1a] rounded-full text-sm font-semibold"
-                        >
-                          {app}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  <ul className="space-y-2">
+                    {service.details.map((detail, i) => (
+                      <li key={i} className="flex items-start gap-3 text-gray-700">
+                        <svg className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-sm">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Advantages */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[#d4a32b] font-bold text-sm uppercase tracking-wider">Nos Atouts</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mt-4 mb-6">
-              Pourquoi Nous Choisir ?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100">
-              <div className="w-16 h-16 bg-[#d4a32b]/10 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#d4a32b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+      {/* Conformité & Normes */}
+      <section className="py-32 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-5xl md:text-6xl font-black mb-8">
+                Conformité Réglementaire
+              </h2>
+              <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+                <p>
+                  Tous nos panneaux de signalisation sont <strong className="text-yellow-400">conformes au code de la route</strong> et aux arrêtés en vigueur.
+                </p>
+                <p>
+                  Nous respectons scrupuleusement les <strong className="text-yellow-400">normes et réglementations</strong> :
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    Arrêté du 24 novembre 1967
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    Instruction interministérielle
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    Normes NF et marquage CE
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    Classe de rétroréflexion adaptée
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full" />
+                    Garantie anti-UV longue durée
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">Conformité Garantie</h3>
-              <p className="text-gray-600">
-                Tous nos produits et installations respectent les normes en vigueur
-              </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100">
-              <div className="w-16 h-16 bg-[#d4a32b]/10 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#d4a32b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">Installation Rapide</h3>
-              <p className="text-gray-600">
-                Intervention rapide avec un minimum de gêne pour la circulation
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100">
-              <div className="w-16 h-16 bg-[#d4a32b]/10 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#d4a32b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">Prix Compétitifs</h3>
-              <p className="text-gray-600">
-                Des tarifs justes et transparents sans compromis sur la qualité
-              </p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-6"
+            >
+              {[
+                { icon: '✓', title: 'Conforme', desc: 'Code de la route' },
+                { icon: '🛡️', title: 'Garantie', desc: 'Matériel certifié' },
+                { icon: '💪', title: 'Résistant', desc: 'Intempéries & UV' },
+                { icon: '⚡', title: 'Rapide', desc: 'Installation express' }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center"
+                >
+                  <div className="text-4xl mb-3">{item.icon}</div>
+                  <div className="text-lg font-bold text-yellow-400 mb-1">{item.title}</div>
+                  <div className="text-sm text-gray-400">{item.desc}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-[#d4a32b] to-[#e5b93a]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">
-            Besoin de Signalisation Verticale ?
-          </h2>
-          <p className="text-xl text-[#1a1a1a]/80 mb-8">
-            Contactez GL Marquage pour un devis gratuit et sans engagement
-          </p>
+      {/* Zone d'intervention */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-black mb-6">
+              Zone d'Intervention
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Pose de signalisation verticale dans toute la région <strong>Auvergne-Rhône-Alpes</strong> et en <strong>Suisse romande</strong>
+            </p>
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:0698741199"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#1a1a1a] text-white rounded-full font-bold text-lg hover:bg-[#2d2d2d] transition-all shadow-xl"
-            >
-              <span className="mr-2">📞</span>
-              06 98 74 11 99
-            </a>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#1a1a1a] rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-xl"
-            >
-              Formulaire de Contact
-            </Link>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {zones.map((zone, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`p-8 rounded-3xl text-center transition-all ${
+                  zone.primary
+                    ? 'bg-gradient-to-br from-yellow-400 to-yellow-500 text-black shadow-2xl'
+                    : 'bg-gray-50 hover:bg-gray-100'
+                }`}
+              >
+                <div className={`text-6xl font-black mb-2 ${zone.primary ? 'text-black' : 'text-gray-800'}`}>
+                  {zone.code}
+                </div>
+                <div className={`text-xl font-bold mb-2 ${zone.primary ? 'text-black' : 'text-gray-900'}`}>
+                  {zone.name}
+                </div>
+                <div className={`text-sm ${zone.primary ? 'text-black/70' : 'text-gray-600'}`}>
+                  {zone.ville}
+                </div>
+              </motion.div>
+            ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-4 px-8 py-4 bg-gray-50 rounded-full">
+              <span className="text-3xl">🇨🇭</span>
+              <div className="text-left">
+                <div className="text-lg font-bold text-gray-900">Suisse - Genève</div>
+                <div className="text-sm text-gray-600">Intervention transfrontalière</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-32 bg-black text-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-5xl md:text-7xl font-black mb-8">
+              Un projet de
+              <span className="block text-yellow-400">signalisation ?</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Devis gratuit sous 24h · Installation professionnelle · Conformité garantie
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-full font-black text-lg hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30"
+              >
+                Demander un devis
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <a
+                href="tel:0698741199"
+                className="inline-flex items-center gap-3 px-12 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white rounded-full font-black text-lg hover:bg-white/20 transition-all"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                06 98 74 11 99
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
