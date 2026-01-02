@@ -43,7 +43,7 @@ export default function Header() {
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 pointer-events-none"
       >
-        <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-8">
+        <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <div className="flex justify-between items-center pointer-events-auto">
             {/* Logo */}
             <motion.div
@@ -51,13 +51,13 @@ export default function Header() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Link href="/" className="flex items-center group relative z-50">
+              <Link href="/" className="flex items-center group relative z-50 bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-xl hover:shadow-2xl transition-all">
                 <Image
                   src="/logo.png"
                   alt="GL Marquage"
-                  width={200}
-                  height={70}
-                  className="h-16 w-auto transition-all duration-500"
+                  width={180}
+                  height={60}
+                  className="h-12 w-auto transition-all duration-500"
                   priority
                 />
               </Link>
@@ -69,12 +69,12 @@ export default function Header() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}
               onClick={() => setMenuOpen(!menuOpen)}
-              className={`relative z-50 w-16 h-16 rounded-full transition-all duration-500 flex items-center justify-center shadow-2xl ${
+              className={`relative z-50 w-14 h-14 rounded-full transition-all duration-500 flex items-center justify-center shadow-xl ${
                 menuOpen
                   ? 'bg-white text-black scale-110'
                   : scrolled
-                  ? 'bg-black text-white hover:bg-yellow-400 hover:text-black hover:scale-110'
-                  : 'bg-white text-black hover:bg-yellow-400 hover:scale-110 shadow-white/20'
+                  ? 'bg-black/90 backdrop-blur-sm text-white hover:bg-yellow-400 hover:text-black hover:scale-110'
+                  : 'bg-white/95 backdrop-blur-sm text-black hover:bg-yellow-400 hover:scale-110'
               }`}
               aria-label="Toggle menu"
             >

@@ -2,22 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Grid3D from '@/components/3d/Grid3D';
-import RoadElements3D from '@/components/3d/RoadElements3D';
+import HeroCinematic from '@/components/heroes/HeroCinematic';
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const services = [
     {
@@ -88,151 +78,19 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Bold Yellow & Black */}
-      <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-        {/* Background Elements - Très subtils */}
-        <motion.div
-          style={{ y }}
-          className="absolute inset-0 z-0"
-        >
-          <div className="absolute top-20 right-0 w-[800px] h-[800px] bg-gradient-to-br from-white/5 to-white/2 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-white/3 to-transparent rounded-full blur-3xl"></div>
-        </motion.div>
-
-        {/* Grille 3D et éléments routiers */}
-        <Grid3D />
-        <RoadElements3D />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 py-32">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            style={{ opacity }}
-            className="text-center"
-          >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-5 py-2 bg-yellow-400 rounded-full mb-12"
-            >
-              <div className="w-2 h-2 bg-black rounded-full animate-pulse"></div>
-              <span className="text-black text-sm font-bold tracking-wide">Expert en signalisation depuis 2010</span>
-            </motion.div>
-
-            {/* Main Title - Very Large & Bold */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-[5rem] md:text-[8rem] lg:text-[12rem] font-black leading-[0.85] tracking-tighter mb-8"
-            >
-              <span className="block text-white">GL</span>
-              <span className="block text-yellow-400">
-                Marquage
-              </span>
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-xl md:text-3xl text-gray-300 font-light max-w-4xl mx-auto mb-8 leading-relaxed"
-            >
-              Spécialiste de la signalisation routière horizontale et verticale en Savoie, Haute-Savoie et Rhône-Alpes
-              <span className="block mt-4 text-lg text-yellow-400 font-medium">
-                Marquage au sol · Panneaux de signalisation · Mobilier urbain
-              </span>
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-            >
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-12 py-6 bg-yellow-400 text-black rounded-full text-lg font-bold hover:bg-yellow-300 transition-all duration-300 flex items-center gap-3 shadow-xl hover:shadow-2xl"
-              >
-                Devis gratuit sous 24h
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </motion.a>
-
-              <motion.a
-                href="tel:0698741199"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-12 py-6 bg-white/10 backdrop-blur border-2 border-yellow-400 text-yellow-400 rounded-full text-lg font-bold hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-lg"
-              >
-                06 98 74 11 99
-              </motion.a>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-32 pt-16 border-t border-gray-800"
-            >
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-5xl md:text-6xl font-black text-yellow-400 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-white font-bold mb-1">
-                    {stat.label}
-                  </div>
-                  <div className="text-xs text-gray-400">
-                    {stat.description}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-yellow-400 rounded-full flex items-start justify-center p-2"
-          >
-            <div className="w-1 h-2 bg-yellow-400 rounded-full"></div>
-          </motion.div>
-        </motion.div>
-      </section>
+      {/* Hero Section Option 3: Cinematic */}
+      <HeroCinematic />
 
       {/* Introduction / À propos */}
       <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div data-aos="fade-right" data-aos-duration="1000">
               <div className="flex items-center gap-4 mb-6">
-                <div className="h-1 w-16 bg-yellow-400"></div>
-                <span className="text-sm text-gray-600 uppercase tracking-wider font-bold">GL Marquage</span>
+                <div className="h-1 w-16 bg-yellow-400" data-aos="slide-right" data-aos-delay="200"></div>
+                <span className="text-sm text-gray-600 uppercase tracking-wider font-bold" data-aos="fade-in" data-aos-delay="300">GL Marquage</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tight leading-tight">
+              <h2 className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tight leading-tight" data-aos="fade-up" data-aos-delay="400">
                 Votre partenaire de confiance en signalisation
               </h2>
               <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
@@ -257,15 +115,9 @@ export default function Home() {
                   </svg>
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
+            <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" className="relative">
               <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/vehicule glm.png"
@@ -275,11 +127,11 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-yellow-400 text-black rounded-2xl p-6 shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-yellow-400 text-black rounded-2xl p-6 shadow-xl" data-aos="zoom-in" data-aos-delay="600">
                 <div className="text-4xl font-black mb-2">15+</div>
                 <div className="text-sm font-bold">Ans d'expertise</div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
