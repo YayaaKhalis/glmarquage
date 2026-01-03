@@ -22,7 +22,7 @@ export default function Realisations() {
     { id: 2, image: '/IMG_0134.jpeg', title: 'Places PMR', category: 'horizontale', location: 'Annecy (74)' },
     { id: 3, image: '/IMG_2327.jpeg', title: 'Marquage Routier', category: 'horizontale', location: 'Aix-les-Bains (73)' },
     { id: 4, image: '/IMG_2363.jpeg', title: 'Signalisation Voirie', category: 'horizontale', location: 'Albertville (73)' },
-    { id: 5, image: '/IMG_2451.jpeg', title: 'Passage Piéton', category: 'horizontale', location: 'Annemasse (74)' },
+    { id: 5, image: '/passages-pietons-glm-marquage-au-sol.png', title: 'Passage Piéton', category: 'horizontale', location: 'Annemasse (74)' },
     { id: 6, image: '/IMG_5564.jpg', title: 'Marquage Industriel', category: 'horizontale', location: 'Savoie (73)' },
     { id: 7, image: '/IMG_5576.jpg', title: 'Zone de Stockage', category: 'horizontale', location: 'Haute-Savoie (74)' },
     { id: 8, image: '/IMG_8591.jpeg', title: 'Marquage Décoratif', category: 'horizontale', location: 'Chambéry (73)' },

@@ -32,7 +32,7 @@ export default function SignalisationHorizontale() {
         'Zébras et îlots directionnels',
         'Pistes cyclables'
       ],
-      image: '/IMG_2327.jpeg',
+      image: '/passages-pietons-glm-marquage-au-sol.png',
       icon: '🛣️'
     },
     {

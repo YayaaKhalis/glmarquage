@@ -38,14 +38,14 @@ export default function Home() {
   ];
 
   const realisations = [
-    "/IMG_0133.jpeg",
-    "/IMG_0134.jpeg",
-    "/IMG_2327.jpeg",
-    "/IMG_2363.jpeg",
-    "/IMG_2451.jpeg",
-    "/IMG_5564.jpg",
-    "/IMG_5576.jpg",
-    "/IMG_8591.jpeg",
+    "/vehicule glm.png",                         // 0 - Parking / Marquage (Card 01)
+    "/passages-pietons-glm-marquage-au-sol.png", // 1 - Voirie / Passages piétons (Card 02)
+    "/zones-de-stockage-marquage-glm.jpeg",      // 2 - Industriel / Zones de stockage (Card 03)
+    "/Signalisation-panneaux-routiers-singalisation-glm-marquage.png", // 3 - Signalisation / Panneaux (Card 04)
+    "/Marquage-ludique-glm-marquage-au-sol.png", // 4 - Décoratif / Marquage ludique (Card 05)
+    "/Amenagement-urbain-mobilier-glm-marquage.png", // 5 - Autre (Card 06)
+    "/IMG_5576.jpg",                             // 6
+    "/IMG_8591.jpeg",                            // 7
   ];
 
   const avantages = [
@@ -215,16 +215,16 @@ export default function Home() {
               className="relative"
             >
               {/* Main Image */}
-              <div className="relative h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl">
+              <div className="relative h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10">
                 <Image
-                  src="/vehicule glm.png"
-                  alt="Véhicule GL Marquage - Flotte professionnelle"
+                  src="/Design sans titre.png"
+                  alt="GL Marquage - Votre partenaire de confiance"
                   fill
-                  className="object-cover"
+                  className="object-contain p-12"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                {/* Image Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                {/* Image Overlay - Subtle radial for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
 
               {/* Floating Stats Cards */}
@@ -269,14 +269,199 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Project Workflow Timeline - Separator */}
+      <div className="relative bg-gradient-to-b from-black via-gray-900 to-black py-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle, rgba(251, 191, 36, 0.1) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px',
+            }}
+          />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-yellow-400 text-sm font-bold uppercase tracking-widest mb-3">
+              Notre Processus
+            </h3>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              De la prise de contact au{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                service après-vente
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Un accompagnement complet et professionnel pour la réussite de votre projet
+            </p>
+          </motion.div>
+
+          {/* Timeline Steps */}
+          <div className="relative">
+            {/* Connecting Line */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.5 }}
+                className="h-full bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20"
+                style={{ transformOrigin: 'left' }}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-4">
+              {[
+                {
+                  number: "01",
+                  icon: "📞",
+                  title: "Premier Contact",
+                  description: "Échange sur vos besoins et votre projet"
+                },
+                {
+                  number: "02",
+                  icon: "📋",
+                  title: "Étude & Devis",
+                  description: "Analyse technique et proposition détaillée gratuite"
+                },
+                {
+                  number: "03",
+                  icon: "📅",
+                  title: "Planification",
+                  description: "Organisation du chantier et validation des délais"
+                },
+                {
+                  number: "04",
+                  icon: "🚧",
+                  title: "Réalisation",
+                  description: "Exécution des travaux par nos équipes qualifiées"
+                },
+                {
+                  number: "05",
+                  icon: "✅",
+                  title: "Contrôle Qualité",
+                  description: "Vérification et réception des travaux"
+                },
+                {
+                  number: "06",
+                  icon: "🛠️",
+                  title: "SAV & Suivi",
+                  description: "Accompagnement et garantie long terme"
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15, duration: 0.5 }}
+                  className="relative group"
+                >
+                  {/* Step Card */}
+                  <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-400/20 rounded-2xl p-6 text-center hover:border-yellow-400 transition-all duration-300 hover:-translate-y-2">
+                    {/* Step Number Badge */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg shadow-yellow-400/50 group-hover:scale-110 transition-transform">
+                      <span className="text-black font-black text-lg">{step.number}</span>
+                    </div>
+
+                    {/* Icon */}
+                    <div className="text-5xl mb-3 mt-6 group-hover:scale-110 transition-transform">
+                      {step.icon}
+                    </div>
+
+                    {/* Title */}
+                    <h4 className="text-white font-bold text-base mb-2 leading-tight">
+                      {step.title}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-gray-400 text-xs leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* Bottom accent */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* Arrow connector (desktop only) */}
+                  {index < 5 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-2 -translate-y-1/2 z-20">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.8 + index * 0.15 }}
+                        className="w-4 h-4 bg-yellow-400 rotate-45"
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.2 }}
+            className="mt-16 text-center"
+          >
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-yellow-400 text-black rounded-full font-bold text-lg hover:bg-yellow-500 transition-all duration-300 shadow-xl shadow-yellow-400/20 hover:shadow-2xl hover:shadow-yellow-400/40"
+            >
+              <span>Démarrer votre projet</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+
       {/* Divider 2 - Particle Trail Effect */}
       <SectionDivider variant="particle" />
 
-      {/* Services - ASYMMETRIC BENTO BOX DESIGN */}
-      <section className="relative py-40 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-        {/* Subtle Decoration */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-400/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-yellow-400/5 rounded-full blur-3xl" />
+      {/* Services - ASYMMETRIC BENTO BOX DESIGN - Bold Modern Background */}
+      <section className="relative py-40 bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 overflow-hidden">
+        {/* Diagonal Stripe Pattern - Visible */}
+        <div 
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 60px,
+              rgba(251, 191, 36, 0.03) 60px,
+              rgba(251, 191, 36, 0.03) 120px
+            )`,
+          }}
+        />
+        
+        {/* Large Yellow Accent Circle - Top Right */}
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-yellow-400/10 rounded-full blur-3xl" />
+        
+        {/* Large Yellow Accent Circle - Bottom Left */}
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-yellow-500/10 rounded-full blur-3xl" />
+        
+        {/* Dot Grid Pattern Overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)`,
+            backgroundSize: '30px 30px',
+          }}
+        />
 
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative">
           {/* Header - Minimalist Luxury */}
@@ -878,16 +1063,16 @@ export default function Home() {
       <SectionDivider variant="pulse" />
 
       {/* Zone d'Intervention - PREMIUM INTERACTIVE DESIGN */}
-      <section className="relative py-40 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+      <section className="relative py-40 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 overflow-hidden">
         {/* Animated Map Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0 opacity-[0.08]">
           <motion.div
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                radial-gradient(circle at 25% 25%, rgba(255, 214, 0, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(255, 214, 0, 0.2) 0%, transparent 50%),
-                repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(255, 214, 0, 0.1) 80px, rgba(255, 214, 0, 0.1) 100px)
+                radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(251, 191, 36, 0.3) 0%, transparent 50%),
+                repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(251, 191, 36, 0.15) 80px, rgba(251, 191, 36, 0.15) 100px)
               `,
             }}
             animate={{
