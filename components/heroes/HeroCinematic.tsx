@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function HeroCinematic() {
@@ -14,6 +14,22 @@ export default function HeroCinematic() {
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const logoY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  // Typewriter effect
+  const fullText = "Expert en signalisation routière, marquage au sol et mobilier urbain pour professionnels et collectivités en Savoie et Rhône-Alpes.";
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + fullText[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 30); // Vitesse d'écriture (30ms par caractère)
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullText]);
 
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden bg-black">
@@ -65,19 +81,6 @@ export default function HeroCinematic() {
       >
         <div className="w-full max-w-5xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
           <div className="space-y-6 lg:space-y-8">
-              {/* Eyebrow */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-yellow-400/10 border border-yellow-400/20 backdrop-blur-xl"
-              >
-                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-                <span className="text-yellow-400 font-bold text-sm tracking-wide uppercase">
-                  Expert depuis 2008
-                </span>
-              </motion.div>
-
               {/* Main Title - Optimized */}
               <div className="space-y-2">
                 <motion.h1
@@ -98,17 +101,37 @@ export default function HeroCinematic() {
                 </motion.h1>
               </div>
 
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+              {/* Description with Typewriter Effect */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl font-medium"
+                className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl font-medium min-h-[80px] relative"
               >
-                Expert en signalisation routière, marquage au sol et mobilier urbain pour{' '}
-                <span className="text-yellow-400 font-bold">professionnels</span> et{' '}
-                <span className="text-yellow-400 font-bold">collectivités</span> en Savoie et Rhône-Alpes.
-              </motion.p>
+                <p className="inline">
+                  {displayedText.split(' ').map((word, index) => {
+                    const isHighlighted = word.includes('professionnels') || word.includes('collectivités');
+                    return (
+                      <span key={index}>
+                        {isHighlighted ? (
+                          <span className="text-yellow-400 font-bold">{word}</span>
+                        ) : (
+                          <span>{word}</span>
+                        )}
+                        {index < displayedText.split(' ').length - 1 ? ' ' : ''}
+                      </span>
+                    );
+                  })}
+                  {/* Curseur clignotant */}
+                  {currentIndex < fullText.length && (
+                    <motion.span
+                      animate={{ opacity: [1, 0] }}
+                      transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                      className="inline-block w-0.5 h-6 bg-yellow-400 ml-1 align-middle"
+                    />
+                  )}
+                </p>
+              </motion.div>
 
               {/* CTA Buttons */}
               <motion.div
@@ -117,40 +140,48 @@ export default function HeroCinematic() {
                 transition={{ duration: 0.8, delay: 0.5 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
+                {/* Bouton Devis - Sans effet blanc */}
                 <motion.a
                   href="#contact"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-2xl font-black text-base overflow-hidden shadow-2xl shadow-yellow-400/30"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-2xl font-black text-base shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 transition-all"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-white"
-                    initial={{ x: '-100%', skewX: -20 }}
-                    whileHover={{ x: '100%' }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <span className="relative z-10 flex items-center justify-center gap-3">
+                  <span className="flex items-center justify-center gap-3">
                     Demander un devis gratuit
-                    <motion.svg
-                      className="w-6 h-6"
+                    <svg
+                      className="w-6 h-6 group-hover:translate-x-1 transition-transform"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.3 }}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </motion.svg>
+                    </svg>
                   </span>
                 </motion.a>
 
+                {/* Bouton Téléphone - Glassmorphism Apple */}
                 <motion.a
                   href="tel:0698741199"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 bg-white/5 backdrop-blur-2xl border-2 border-white/20 text-white rounded-2xl font-black text-base hover:bg-white/10 hover:border-yellow-400/50 transition-all shadow-xl group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative px-8 py-4 text-white rounded-2xl font-black text-base overflow-hidden shadow-xl hover:shadow-2xl transition-all"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(40px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                  }}
                 >
-                  <span className="flex items-center justify-center gap-3">
+                  {/* Reflet glassmorphism */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity" />
+
+                  {/* Bordure intérieure lumineuse */}
+                  <div className="absolute inset-0 rounded-2xl" style={{
+                    boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.1)',
+                  }} />
+
+                  <span className="relative z-10 flex items-center justify-center gap-3">
                     <svg className="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>

@@ -50,14 +50,15 @@ export default function Header() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
+              className="ml-4"
             >
-              <Link href="/" className="flex items-center group relative z-50 bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-xl hover:shadow-2xl transition-all">
+              <Link href="/" className="flex items-center group relative z-50">
                 <Image
-                  src="/logo.png"
+                  src="/Design sans titre.png"
                   alt="GL Marquage"
-                  width={180}
-                  height={60}
-                  className="h-12 w-auto transition-all duration-500"
+                  width={240}
+                  height={240}
+                  className="h-24 w-24 rounded-full object-cover transition-all duration-500"
                   priority
                 />
               </Link>
@@ -160,7 +161,7 @@ export default function Header() {
                   <Link
                     href="/contact"
                     onClick={() => setMenuOpen(false)}
-                    className="inline-block px-12 py-5 bg-linear-to-r from-yellow-400 to-yellow-500 text-black text-xl font-bold rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 hover:scale-105"
+                    className="inline-block px-12 py-5 bg-linear-to-r from-yellow-400 to-yellow-500 text-black text-xl font-bold rounded-full hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 hover:scale-105 border-2 border-yellow-400"
                   >
                     Devis Gratuit
                   </Link>

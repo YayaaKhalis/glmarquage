@@ -30,6 +30,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
