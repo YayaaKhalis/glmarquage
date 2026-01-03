@@ -81,87 +81,140 @@ export default function Home() {
       {/* Hero Section Option 3: Cinematic */}
       <HeroCinematic />
 
-      {/* Introduction / À propos */}
-      <section className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right" data-aos-duration="1000">
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="h-1 w-16 bg-yellow-400"
-                  data-aos="slide-right"
-                  data-aos-delay="200"
-                ></div>
-                <span
-                  className="text-sm text-gray-600 uppercase tracking-wider font-bold"
-                  data-aos="fade-in"
-                  data-aos-delay="300"
-                >
+      {/* Introduction / À propos - PREMIUM DESIGN */}
+      <section className="relative py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
+        {/* Floating Orbs Background */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Badge animé */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-3 px-5 py-2 mb-8 rounded-full bg-yellow-400/10 border border-yellow-400/20"
+              >
+                <motion.div
+                  className="w-2 h-2 bg-yellow-400 rounded-full"
+                  animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="text-sm font-bold text-yellow-600 uppercase tracking-wider">
                   GL Marquage
                 </span>
-              </div>
-              <h2
-                className="text-5xl md:text-6xl font-black text-black mb-6 tracking-tight leading-tight"
-                data-aos="fade-up"
-                data-aos-delay="400"
+              </motion.div>
+
+              {/* Title with Gradient */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1]"
               >
-                Votre partenaire de confiance en signalisation
-              </h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  <strong className="text-black">GL Marquage</strong> est une
-                  entreprise spécialisée dans la{" "}
-                  <strong>signalisation routière</strong>, le{" "}
-                  <strong>marquage au sol</strong> et l'
-                  <strong>aménagement urbain</strong> en Savoie et Rhône-Alpes.
-                  Forte de plus de 15 ans d'expérience, notre équipe intervient
-                  auprès des collectivités, entreprises et particuliers.
+                <span className="block text-black">Votre partenaire</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600">
+                  de confiance
+                </span>
+                <span className="block text-black">en signalisation</span>
+              </motion.h2>
+
+              {/* Description avec icônes */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="space-y-6 mb-10"
+              >
+                <p className="text-xl text-gray-700 leading-relaxed">
+                  <strong className="text-black font-bold">GL Marquage</strong> est une entreprise spécialisée dans la{" "}
+                  <span className="text-yellow-600 font-semibold">signalisation routière</span>, le{" "}
+                  <span className="text-yellow-600 font-semibold">marquage au sol</span> et l'
+                  <span className="text-yellow-600 font-semibold">aménagement urbain</span> en Savoie et Rhône-Alpes.
                 </p>
-                <p>
-                  Nous proposons des solutions complètes de{" "}
-                  <strong>marquage horizontal</strong> (lignes, passages
-                  piétons, places de parking), de{" "}
-                  <strong>signalisation verticale</strong> (panneaux, potelets)
-                  et de <strong>mobilier urbain</strong> (bancs, poubelles,
-                  abris).
+                
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Forte de <strong className="text-black">plus de 15 ans d'expérience</strong>, notre équipe intervient auprès des collectivités, entreprises et particuliers avec un engagement sans faille pour la qualité et la conformité.
                 </p>
-                <p>
-                  Notre expertise technique et notre connaissance approfondie
-                  des normes en vigueur garantissent des prestations conformes
-                  et durables. Nous utilisons exclusivement des matériaux
-                  certifiés et respectueux de l'environnement.
-                </p>
-              </div>
-              <div className="mt-8">
+              </motion.div>
+
+              {/* Key features avec icônes */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
+              >
+                {[
+                  { icon: '✓', label: 'Certifié NF', color: 'yellow' },
+                  { icon: '⚡', label: 'Réponse 24h', color: 'yellow' },
+                  { icon: '🌱', label: 'Éco-responsable', color: 'yellow' },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 + i * 0.1 }}
+                    className="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center text-black font-black text-lg">
+                      {item.icon}
+                    </div>
+                    <span className="font-bold text-gray-800 text-sm">{item.label}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+              >
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-yellow-400 hover:text-black transition-all"
+                  className="group inline-flex items-center gap-3 px-10 py-5 bg-black text-white rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20"
                 >
-                  Contactez-nous
-                  <svg
+                  <span>Demander un devis</span>
+                  <motion.svg
                     className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </motion.svg>
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div
-              data-aos="fade-left"
-              data-aos-duration="1000"
-              data-aos-delay="200"
+            {/* Right - Image with floating stats */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
               className="relative"
             >
-              <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              {/* Main Image */}
+              <div className="relative h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl">
                 <Image
                   src="/vehicule glm.png"
                   alt="Véhicule GL Marquage - Flotte professionnelle"
@@ -169,16 +222,48 @@ export default function Home() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+                {/* Image Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
-              <div
-                className="absolute -bottom-6 -left-6 bg-yellow-400 text-black rounded-2xl p-6 shadow-xl"
-                data-aos="zoom-in"
-                data-aos-delay="600"
+
+              {/* Floating Stats Cards */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, type: "spring" }}
+                className="absolute -bottom-8 -left-8 bg-gradient-to-br from-yellow-400 to-yellow-500 text-black rounded-3xl p-8 shadow-2xl border-4 border-white"
               >
-                <div className="text-4xl font-black mb-2">15+</div>
-                <div className="text-sm font-bold">Ans d'expertise</div>
-              </div>
-            </div>
+                <div className="text-5xl font-black mb-2">15+</div>
+                <div className="text-sm font-bold uppercase tracking-wider">Ans d'expertise</div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7, type: "spring" }}
+                className="absolute -top-8 -right-8 bg-white text-black rounded-3xl p-6 shadow-2xl border-2 border-gray-100"
+              >
+                <div className="text-4xl font-black mb-1 text-yellow-500">500+</div>
+                <div className="text-xs font-bold text-gray-700 uppercase">Projets réalisés</div>
+              </motion.div>
+
+              {/* Decorative elements */}
+              <motion.div
+                className="absolute top-1/2 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -504,482 +589,613 @@ export default function Home() {
       {/* Divider 3 - Wave Effect */}
       <SectionDivider variant="wave" />
 
-      {/* Avantages - Modern Design */}
-      <section className="relative py-32 bg-black text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
+      {/* Avantages - SPECTACULAR PREMIUM DESIGN */}
+      <section className="relative py-40 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden">
+        {/* Animated Background Grid */}
+        <div className="absolute inset-0 opacity-10">
+          <motion.div
             className="absolute inset-0"
             style={{
-              backgroundImage: `repeating-linear-gradient(
-              0deg,
-              transparent,
-              transparent 50px,
-              rgba(212, 163, 43, 0.1) 50px,
-              rgba(212, 163, 43, 0.1) 52px
-            )`,
+              backgroundImage: `
+                radial-gradient(circle at 20% 50%, rgba(255, 214, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 214, 0, 0.1) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, transparent,  transparent 100px, rgba(255, 214, 0, 0.05) 100px, rgba(255, 214, 0, 0.05) 102px)
+              `,
+            }}
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 100%'],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              ease: 'linear',
             }}
           />
         </div>
 
+        {/* Floating Orbs */}
+        <div className="absolute top-20 left-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-          {/* Header */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          
+          {/* Header - Centered & Powerful */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-24"
+          >
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="inline-flex items-center gap-3 px-6 py-3 mb-8 rounded-full bg-yellow-400/10 border border-yellow-400/20 backdrop-blur-sm"
             >
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full mb-6">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-                <span className="text-yellow-400 text-sm font-bold uppercase tracking-wider">
-                  Nos Engagements
-                </span>
-              </div>
-              <h2 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
-                Pourquoi nous
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">
-                  choisir ?
-                </span>
-              </h2>
+              <motion.div
+                className="w-2 h-2 bg-yellow-400 rounded-full"
+                animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <span className="text-yellow-400 text-sm font-bold uppercase tracking-[0.3em]">
+                Nos Engagements
+              </span>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:text-right"
-            >
-              <p className="text-2xl md:text-3xl font-light text-gray-300 leading-relaxed">
-                Une expertise{" "}
-                <span className="text-yellow-400 font-bold">reconnue</span>, des
-                prestations de{" "}
-                <span className="text-yellow-400 font-bold">qualité</span> et un
-                service client{" "}
-                <span className="text-yellow-400 font-bold">irréprochable</span>
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Cards Grid - Asymmetric Modern Layout */}
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Large Feature Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="lg:col-span-2 group relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-3xl p-12 overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-20 h-20 bg-black rounded-2xl flex items-center justify-center">
-                    <span className="text-5xl">{avantages[0].icon}</span>
-                  </div>
-                  <div className="text-8xl font-black text-black/10">01</div>
-                </div>
-                <h3 className="text-4xl md:text-5xl font-black text-black mb-6">
-                  {avantages[0].title}
-                </h3>
-                <p className="text-xl text-black/80 leading-relaxed max-w-2xl">
-                  {avantages[0].description}
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Vertical Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-300"
-            >
-              <div className="flex flex-col h-full">
-                <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <span className="text-4xl text-black">
-                    {avantages[1].icon}
-                  </span>
-                </div>
-                <div className="text-6xl font-black text-white/10 mb-4">02</div>
-                <h3 className="text-3xl font-black text-white mb-4 group-hover:text-yellow-400 transition-colors">
-                  {avantages[1].title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  {avantages[1].description}
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Horizontal Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-300"
-            >
-              <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <span className="text-4xl text-black">
-                    {avantages[2].icon}
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <div className="text-6xl font-black text-white/10 mb-2">
-                    03
-                  </div>
-                  <h3 className="text-2xl font-black text-white mb-3 group-hover:text-yellow-400 transition-colors">
-                    {avantages[2].title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {avantages[2].description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Wide Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+            {/* Title */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="lg:col-span-2 group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-300"
+              className="text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1]"
             >
-              <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <span className="text-4xl text-black">
-                    {avantages[3].icon}
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-3xl font-black text-white group-hover:text-yellow-400 transition-colors">
-                      {avantages[3].title}
-                    </h3>
-                    <div className="text-8xl font-black text-white/10">04</div>
-                  </div>
-                  <p className="text-gray-400 leading-relaxed text-lg max-w-3xl">
-                    {avantages[3].description}
+              <span className="block text-white">Pourquoi nous</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500"
+                style={{
+                  backgroundSize: '200% auto',
+                  animation: 'shine 3s linear infinite',
+                }}
+              >
+                choisir ?
+              </span>
+            </motion.h2>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-2xl md:text-3xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed"
+            >
+              Une expertise{" "}
+              <span className="text-yellow-400 font-semibold">reconnue</span>, des prestations de{" "}
+              <span className="text-yellow-400 font-semibold">qualité</span> et un service client{" "}
+              <span className="text-yellow-400 font-semibold">irréprochable</span>
+            </motion.p>
+          </motion.div>
+
+          {/* Cards - Interactive Bento Grid */}
+          <div className="grid lg:grid-cols-3 gap-6 mb-20">
+            
+            {/* Card 1 - Large Featured */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-2 lg:row-span-2 group"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 2 }}
+                transition={{ duration: 0.3 }}
+                className="relative h-full bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-[2.5rem] p-12 overflow-hidden shadow-2xl"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                {/* Animated Background Blob */}
+                <motion.div
+                  className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    x: [0, 30, 0],
+                    y: [0, -20, 0],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                
+                <div className="relative z-10">
+                  {/* Icon with animation */}
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6, type: "spring" }}
+                    className="w-24 h-24 bg-black/10 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-8 border-2 border-black/20"
+                  >
+                    <span className="text-6xl">{avantages[0].icon}</span>
+                  </motion.div>
+
+                  <h3 className="text-5xl md:text-6xl font-black text-black mb-6 leading-tight">
+                    {avantages[0].title}
+                  </h3>
+                  
+                  <p className="text-xl md:text-2xl text-black/80 leading-relaxed max-w-2xl mb-8">
+                    {avantages[0].description}
                   </p>
+
+                  {/* Decorative Number */}
+                  <div className="text-[12rem] font-black text-black/5 absolute bottom-4 right-4 leading-none pointer-events-none">
+                    01
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
+
+            {/* Cards 2 & 3 - Stacked */}
+            {[avantages[1], avantages[2]].map((avantage, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: 0.1 + idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group"
+              >
+                <motion.div
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-yellow-400/30 transition-all duration-300 shadow-xl"
+                >
+                  {/* Icon */}
+                  <motion.div
+                    whileHover={{ scale: 1.15, rotate: 10 }}
+                    className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-6"
+                  >
+                    <span className="text-4xl text-black">{avantage.icon}</span>
+                  </motion.div>
+
+                  {/* Number Badge */}
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-yellow-400/10 border border-yellow-400/30 mb-4">
+                    <span className="text-yellow-400 font-black text-xl">0{idx + 2}</span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-4 group-hover:text-yellow-400 transition-colors">
+                    {avantage.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 leading-relaxed text-lg">
+                    {avantage.description}
+                  </p>
+
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: 'radial-gradient(circle at 50% 0%, rgba(255, 214, 0, 0.1) 0%, transparent 70%)',
+                    }}
+                  />
+                </motion.div>
+              </motion.div>
+            ))}
+
+            {/* Card 4 - Wide */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-3 group"
+            >
+              <motion.div
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.3 }}
+                className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:bg-white/10 hover:border-yellow-400/30 transition-all duration-300 shadow-xl"
+              >
+                <div className="flex flex-col md:flex-row items-start gap-8">
+                  {/* Icon */}
+                  <motion.div
+                    whileHover={{ scale: 1.15, rotate: -10 }}
+                    className="w-20 h-20 bg-yellow-400 rounded-3xl flex items-center justify-center flex-shrink-0"
+                  >
+                    <span className="text-5xl text-black">{avantages[3].icon}</span>
+                  </motion.div>
+
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-4">
+                      <h3 className="text-3xl md:text-4xl font-black text-white group-hover:text-yellow-400 transition-colors">
+                        {avantages[3].title}
+                      </h3>
+                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-yellow-400/10 border border-yellow-400/30">
+                        <span className="text-yellow-400 font-black text-2xl">04</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 leading-relaxed text-lg md:text-xl max-w-4xl">
+                      {avantages[3].description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+
           </div>
 
-          {/* Bottom Stats */}
+          {/* Stats Counter - Animated */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 p-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10"
           >
             {[
-              { number: "500+", label: "Projets réalisés" },
-              { number: "15+", label: "Ans d'expérience" },
-              { number: "24h", label: "Délai de réponse" },
-              { number: "100%", label: "Satisfaction" },
+              { number: "500+", label: "Projets réalisés", icon: "📊" },
+              { number: "15+", label: "Ans d'expérience", icon: "⭐" },
+              { number: "24h", label: "Délai de réponse", icon: "⚡" },
+              { number: "100%", label: "Satisfaction client", icon: "❤️" },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-5xl md:text-6xl font-black text-yellow-400 mb-2">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
+                className="text-center group"
+              >
+                <div className="text-4xl mb-3 group-hover:scale-125 transition-transform">{stat.icon}</div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500 mb-2"
+                >
                   {stat.number}
-                </div>
-                <div className="text-sm text-gray-400 uppercase tracking-wider">
+                </motion.div>
+                <div className="text-sm text-gray-400 uppercase tracking-wider font-medium">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
+
         </div>
+
+        {/* CSS for shine animation */}
+        <style jsx>{`
+          @keyframes shine {
+            to {
+              background-position: 200% center;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Divider 4 - Pulse Rings Effect */}
       <SectionDivider variant="pulse" />
 
-      {/* Zone d'Intervention - Road Journey Design */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        {/* Diagonal Yellow Stripes - Road Inspired */}
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 opacity-[0.04]"
+      {/* Zone d'Intervention - PREMIUM INTERACTIVE DESIGN */}
+      <section className="relative py-40 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+        {/* Animated Map Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <motion.div
+            className="absolute inset-0"
             style={{
               backgroundImage: `
-              repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 80px,
-                #FFD600 80px,
-                #FFD600 100px
-              )
-            `,
+                radial-gradient(circle at 25% 25%, rgba(255, 214, 0, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 214, 0, 0.2) 0%, transparent 50%),
+                repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(255, 214, 0, 0.1) 80px, rgba(255, 214, 0, 0.1) 100px)
+              `,
+            }}
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 100%'],
+            }}
+            transition={{
+              duration: 30,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              ease: 'linear',
             }}
           />
         </div>
 
-        {/* Dashed Road Lines Pattern */}
-        <div className="absolute inset-0 opacity-[0.06]">
-          <div
-            className="absolute top-1/4 left-0 right-0 h-px bg-yellow-400"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(to right, #FFD600 0px, #FFD600 60px, transparent 60px, transparent 100px)",
-            }}
-          />
-          <div
-            className="absolute top-3/4 left-0 right-0 h-px bg-yellow-400"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(to right, #FFD600 0px, #FFD600 60px, transparent 60px, transparent 100px)",
-            }}
-          />
-        </div>
-
-        {/* Corner Accent - Yellow Glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
+        {/* Floating Elements */}
+        <div className="absolute top-20 right-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-          {/* Section Header - Split Layout */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
+          
+          {/* Header - Centered & Impactful */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-24"
+          >
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="inline-flex items-center gap-3 px-6 py-3 mb-8 rounded-full bg-yellow-400/10 border border-yellow-400/20"
             >
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full mb-6">
-                <svg
-                  className="w-4 h-4 text-yellow-600"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
-                <span className="text-yellow-700 text-sm font-bold uppercase tracking-wider">
-                  Notre Couverture
-                </span>
-              </div>
-              <h2 className="text-5xl md:text-7xl font-black text-black mb-6 leading-tight">
-                Zone d&apos;Intervention
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                GL Marquage intervient dans toute la région{" "}
-                <strong className="text-black">Auvergne-Rhône-Alpes</strong> et
-                en <strong className="text-black">Suisse</strong> pour tous vos
-                projets de signalisation et d&apos;aménagement urbain
-              </p>
+              <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <span className="text-yellow-700 text-sm font-bold uppercase tracking-[0.3em]">
+                Notre Couverture
+              </span>
             </motion.div>
 
-            {/* Map Illustration Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            {/* Title */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative aspect-square lg:aspect-auto lg:h-[400px]"
+              transition={{ delay: 0.3 }}
+              className="text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-yellow-500/10 rounded-3xl border-4 border-yellow-400/30 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-8xl mb-4">📍</div>
-                  <div className="text-2xl font-black text-black">
-                    Rhône-Alpes
-                  </div>
-                  <div className="text-lg text-gray-600">+ Suisse romande</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              <span className="block text-black">Zone</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600">
+                d'Intervention
+              </span>
+            </motion.h2>
 
-          {/* Road-Style Departments Display */}
-          <div className="relative mb-24">
-            {/* Horizontal Road Line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-2 -translate-y-1/2 z-0">
-              <div className="h-full bg-gradient-to-r from-gray-200 via-yellow-400/40 to-gray-200 rounded-full"></div>
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-2xl md:text-3xl text-gray-600 font-light max-w-4xl mx-auto leading-relaxed"
+            >
+              GL Marquage intervient dans toute la région{" "}
+              <span className="text-black font-semibold">Auvergne-Rhône-Alpes</span> et en{" "}
+              <span className="text-black font-semibold">Suisse</span> pour tous vos projets de signalisation
+            </motion.p>
+          </motion.div>
+
+          {/* Department Cards - Premium Bento Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              {
+                code: "73",
+                name: "Savoie",
+                primary: true,
+                description: "Zone prioritaire",
+                cities: "Chambéry, Aix-les-Bains",
+                gradient: "from-yellow-400 to-yellow-500",
+              },
+              {
+                code: "74",
+                name: "Haute-Savoie",
+                primary: true,
+                description: "Zone prioritaire",
+                cities: "Annecy, Annemasse",
+                gradient: "from-yellow-500 to-yellow-600",
+              },
+              {
+                code: "01",
+                name: "Ain",
+                primary: false,
+                description: "Intervention régulière",
+                cities: "Bourg-en-Bresse, Belley",
+              },
+              {
+                code: "38",
+                name: "Isère",
+                primary: false,
+                description: "Intervention régulière",
+                cities: "Grenoble, Vienne",
+              },
+            ].map((zone, index) => (
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full"
-                animate={{
-                  x: ["-100%", "200%"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            </div>
-
-            {/* Departments - Horizontal Layout */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-              {[
-                {
-                  code: "73",
-                  name: "Savoie",
-                  primary: true,
-                  description: "Zone prioritaire",
-                  cities: "Chambéry, Aix-les-Bains",
-                },
-                {
-                  code: "74",
-                  name: "Haute-Savoie",
-                  primary: true,
-                  description: "Zone prioritaire",
-                  cities: "Annecy, Annemasse",
-                },
-                {
-                  code: "01",
-                  name: "Ain",
-                  primary: false,
-                  description: "Intervention régulière",
-                  cities: "Bourg-en-Bresse, Belley",
-                },
-                {
-                  code: "38",
-                  name: "Isère",
-                  primary: false,
-                  description: "Intervention régulière",
-                  cities: "Grenoble, Vienne",
-                },
-              ].map((zone, index) => (
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="group"
+              >
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.6 }}
-                  className="group relative"
+                  whileHover={{ y: -12, scale: 1.02 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                  className={`relative h-full rounded-3xl p-8 shadow-xl transition-all duration-300 ${
+                    zone.primary
+                      ? `bg-gradient-to-br ${zone.gradient} hover:shadow-2xl hover:shadow-yellow-400/30`
+                      : "bg-white border-2 border-gray-200 hover:border-yellow-400 hover:shadow-2xl"
+                  }`}
                 >
-                  {/* Main Card */}
+                  {/* Star Badge for Primary */}
+                  {zone.primary && (
+                    <motion.div
+                      initial={{ rotate: 0 }}
+                      whileHover={{ rotate: 360, scale: 1.2 }}
+                      transition={{ duration: 0.6 }}
+                      className="absolute -top-4 -right-4 w-12 h-12 bg-black rounded-full flex items-center justify-center shadow-lg"
+                    >
+                      <span className="text-yellow-400 text-2xl">★</span>
+                    </motion.div>
+                  )}
+
+                  {/* Department Code - Massive */}
                   <div
-                    className={`relative p-8 rounded-3xl transition-all duration-500 ${
-                      zone.primary
-                        ? "bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-2xl shadow-yellow-400/20 hover:shadow-3xl hover:shadow-yellow-400/30 hover:-translate-y-2"
-                        : "bg-white border-2 border-gray-200 hover:border-yellow-400 hover:-translate-y-2 hover:shadow-xl"
+                    className={`text-[7rem] font-black leading-none mb-4 ${
+                      zone.primary ? "text-black/90" : "text-gray-900"
                     }`}
                   >
-                    {/* Priority Badge */}
-                    {zone.primary && (
-                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-black rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-yellow-400 text-lg">★</span>
-                      </div>
-                    )}
-
-                    {/* Department Code - Large */}
-                    <div
-                      className={`text-8xl font-black mb-4 leading-none ${
-                        zone.primary ? "text-black" : "text-gray-900"
-                      }`}
-                    >
-                      {zone.code}
-                    </div>
-
-                    {/* Department Name */}
-                    <div
-                      className={`text-2xl font-bold mb-2 ${
-                        zone.primary ? "text-black" : "text-gray-900"
-                      }`}
-                    >
-                      {zone.name}
-                    </div>
-
-                    {/* Description */}
-                    <div
-                      className={`text-sm font-semibold mb-3 uppercase tracking-wide ${
-                        zone.primary ? "text-black/70" : "text-gray-500"
-                      }`}
-                    >
-                      {zone.description}
-                    </div>
-
-                    {/* Cities */}
-                    <div
-                      className={`text-xs ${
-                        zone.primary ? "text-black/60" : "text-gray-400"
-                      }`}
-                    >
-                      {zone.cities}
-                    </div>
-
-                    {/* Road Stripe Accent */}
-                    <div
-                      className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-3xl ${
-                        zone.primary
-                          ? "bg-black"
-                          : "bg-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                      }`}
-                    />
+                    {zone.code}
                   </div>
+
+                  {/* Department Name */}
+                  <h3
+                    className={`text-2xl font-black mb-2 ${
+                      zone.primary ? "text-black" : "text-gray-900"
+                    }`}
+                  >
+                    {zone.name}
+                  </h3>
+
+                  {/* Description Badge */}
+                  <div
+                    className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 ${
+                      zone.primary
+                        ? "bg-black/20 text-black"
+                        : "bg-yellow-400/20 text-yellow-700"
+                    }`}
+                  >
+                    {zone.description}
+                  </div>
+
+                  {/* Cities */}
+                  <p
+                    className={`text-sm ${
+                      zone.primary ? "text-black/70" : "text-gray-500"
+                    }`}
+                  >
+                    {zone.cities}
+                  </p>
+
+                  {/* Bottom Accent Line */}
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1.5 rounded-b-3xl transition-all ${
+                      zone.primary
+                        ? "bg-black/30"
+                        : "bg-yellow-400 scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+
+                  {/* Hover Glow */}
+                  {!zone.primary && (
+                    <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        background: 'radial-gradient(circle at 50% 0%, rgba(255, 214, 0, 0.1) 0%, transparent 70%)',
+                      }}
+                    />
+                  )}
                 </motion.div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Switzerland - Special Destination */}
+          {/* Switzerland - Premium Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mb-20"
           >
-            <div className="bg-white border-2 border-yellow-400 rounded-3xl p-10 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <motion.div
+              whileHover={{ scale: 1.01, y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-gradient-to-br from-white to-gray-50 border-2 border-yellow-400 rounded-[2.5rem] p-12 shadow-2xl overflow-hidden group"
+            >
+              {/* Animated Background */}
+              <motion.div
+                className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                 {/* Left - Flag & Info */}
-                <div className="flex items-center gap-6">
-                  <div className="text-7xl">🇨🇭</div>
+                <div className="flex items-center gap-8">
+                  <motion.div
+                    animate={{
+                      y: [0, -10, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="text-8xl"
+                  >
+                    🇨🇭
+                  </motion.div>
                   <div>
-                    <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                      Suisse - Genève
-                    </div>
-                    <div className="text-lg text-gray-600">
-                      Intervention transfrontalière • Canton de Genève
-                    </div>
+                    <h3 className="text-4xl md:text-5xl font-black text-black mb-3">
+                      Suisse
+                    </h3>
+                    <p className="text-xl text-gray-600 flex items-center gap-2">
+                      <span>🌍</span>
+                      <span>Intervention transfrontalière • Canton de Genève</span>
+                    </p>
                   </div>
                 </div>
 
                 {/* Right - Badge */}
-                <div className="shrink-0">
-                  <div className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full shadow-lg">
-                    <div className="text-black font-black text-lg">
-                      🌍 International
+                <motion.div
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  className="shrink-0"
+                >
+                  <div className="px-10 py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full shadow-xl">
+                    <div className="text-black font-black text-xl flex items-center gap-2">
+                      <span className="text-2xl">🌍</span>
+                      <span>International</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Bottom Accent */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full" />
-            </div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+            </motion.div>
           </motion.div>
 
-          {/* Coverage Stats */}
+          {/* Coverage Stats - Modern Grid */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-gray-200 shadow-xl"
           >
             {[
               { value: "4", label: "Départements", icon: "🗺️" },
-              { value: "2", label: "Pays", icon: "🌍" },
+              { value: "2", label: "Pays couverts", icon: "🌍" },
               { value: "50km", label: "Rayon moyen", icon: "📍" },
               { value: "24h", label: "Délai intervention", icon: "⚡" },
             ].map((stat, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="text-center p-6 bg-white rounded-2xl border border-gray-200 hover:border-yellow-400 transition-colors"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 + i * 0.1, type: "spring" }}
+                className="text-center group"
               >
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-4xl font-black text-black mb-1">
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  className="text-5xl mb-4"
+                >
+                  {stat.icon}
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600 mb-2"
+                >
                   {stat.value}
-                </div>
-                <div className="text-sm text-gray-600 font-semibold">
+                </motion.div>
+                <div className="text-sm text-gray-600 font-semibold uppercase tracking-wider">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
+
         </div>
       </section>
 
