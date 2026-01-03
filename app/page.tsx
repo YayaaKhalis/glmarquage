@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroCinematic from "@/components/heroes/HeroCinematic";
 import SectionDivider from "@/components/SectionDivider";
+import RoadDivider from "@/components/RoadDivider";
 
 export default function Home() {
   const services = [
@@ -1864,6 +1865,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Road Divider before Footer */}
+      <RoadDivider />
+      
       <Footer />
     </div>
   );

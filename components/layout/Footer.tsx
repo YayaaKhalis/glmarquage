@@ -10,11 +10,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <Image
-              src="/logo.png"
+              src="/Design sans titre.png"
               alt="GL Marquage"
-              width={180}
-              height={60}
-              className="h-12 w-auto brightness-0 invert"
+              width={240}
+              height={240}
+              className="h-24 w-24 rounded-full object-cover"
             />
             <p className="text-slate-400 leading-relaxed text-lg font-light">
               Expert en signalisation routière, marquage au sol et mobilier urbain.
