@@ -15,6 +15,16 @@ export default function HeroCinematic() {
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const logoY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
+  // Window height for SSR compatibility
+  const [windowHeight, setWindowHeight] = useState(1000);
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight);
+    const handleResize = () => setWindowHeight(window.innerHeight);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Typewriter effect
   const fullText = "Expert en signalisation routière, marquage au sol et mobilier urbain pour professionnels et collectivités en Savoie et Rhône-Alpes.";
   const [displayedText, setDisplayedText] = useState("");
@@ -62,7 +72,7 @@ export default function HeroCinematic() {
             className="absolute h-32 w-1 bg-yellow-400"
             style={{ left: `${10 + i * 12}%` }}
             animate={{
-              y: [-200, window.innerHeight + 200],
+              y: [-200, windowHeight + 200],
             }}
             transition={{
               duration: 3 + i * 0.3,
@@ -73,6 +83,7 @@ export default function HeroCinematic() {
           />
         ))}
       </div>
+
 
       {/* Main Content */}
       <motion.div

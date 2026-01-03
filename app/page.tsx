@@ -186,112 +186,318 @@ export default function Home() {
       {/* Divider 2 - Particle Trail Effect */}
       <SectionDivider variant="particle" />
 
-      {/* Services - Clean Grid */}
-      <section className="py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          {/* Section Header */}
+      {/* Services - ASYMMETRIC BENTO BOX DESIGN */}
+      <section className="relative py-40 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+        {/* Subtle Decoration */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-400/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-yellow-400/5 rounded-full blur-3xl" />
+
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative">
+          {/* Header - Minimalist Luxury */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-24"
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-24"
           >
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-1 w-16 bg-yellow-400"></div>
-              <span className="text-sm text-gray-600 uppercase tracking-wider font-bold">
-                Nos Services
+            <div className="flex items-center gap-4 mb-8">
+              <motion.div
+                className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
+                initial={{ width: 0 }}
+                whileInView={{ width: 120 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.3 }}
+              />
+              <span className="text-sm font-semibold text-yellow-600 uppercase tracking-[0.2em]">
+                Excellence
               </span>
-              <div className="h-1 w-16 bg-yellow-400"></div>
             </div>
-            <h2 className="text-6xl md:text-8xl font-black text-black mb-6 tracking-tight">
-              Notre Expertise
+
+            <h2 className="text-7xl md:text-8xl lg:text-9xl font-black leading-[0.9] mb-8">
+              <span className="block text-black">Notre</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600">
+                Expertise
+              </span>
             </h2>
-            <p className="text-2xl text-gray-600 font-light max-w-3xl mx-auto">
-              Des solutions professionnelles et durables pour tous vos besoins
-              en signalisation routière et aménagement urbain
+
+            <p className="text-2xl md:text-3xl text-gray-600 font-light max-w-3xl leading-relaxed">
+              Des solutions{" "}
+              <span className="text-black font-medium italic">professionnelles</span> et{" "}
+              <span className="text-black font-medium italic">durables</span>{" "}
+              pour tous vos besoins
             </p>
           </motion.div>
 
-          {/* Services Grid */}
-          <div className="space-y-32">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <Link href={service.href} className="group block">
-                  <div
-                    className={`grid lg:grid-cols-2 gap-16 items-center ${
-                      index % 2 === 1 ? "lg:grid-flow-dense" : ""
-                    }`}
+          {/* Bento Grid Layout - Asymmetric */}
+          <div className="grid grid-cols-12 gap-6 auto-rows-[500px]">
+            
+            {/* Card 1 - Large Featured (Signalisation Horizontale) */}
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="col-span-12 lg:col-span-7 row-span-2"
+            >
+              <Link href={services[0].href} className="group block h-full">
+                <motion.div
+                  whileHover={{ scale: 0.99 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="relative h-full rounded-[2.5rem] overflow-hidden bg-black shadow-2xl"
+                >
+                  {/* Parallax Image */}
+                  <motion.div
+                    className="absolute inset-0"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    {/* Image */}
-                    <div
-                      className={`relative ${
-                        index % 2 === 1 ? "lg:col-start-2" : ""
-                      }`}
-                    >
-                      <div className="relative h-[600px] rounded-3xl overflow-hidden bg-gray-200 shadow-xl">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
+                    <Image
+                      src={services[0].image}
+                      alt={services[0].title}
+                      fill
+                      className="object-cover opacity-60"
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                    />
+                  </motion.div>
 
-                      {/* Floating Number */}
-                      <motion.div
-                        className="absolute -top-8 -right-8 w-32 h-32 bg-yellow-400 rounded-full flex items-center justify-center shadow-2xl border-4 border-black"
-                        whileHover={{ scale: 1.1, rotate: 10 }}
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center">
+                        <span className="text-black text-2xl font-black">{services[0].number}</span>
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-yellow-400 to-transparent" />
+                    </div>
+
+                    <h3 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                      {services[0].title}
+                    </h3>
+
+                    <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
+                      {services[0].description}
+                    </p>
+
+                    <motion.div
+                      className="group/cta inline-flex items-center gap-3 text-yellow-400 font-bold text-lg"
+                      whileHover={{ x: 8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span className="relative">
+                        En savoir plus
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover/cta:w-full transition-all duration-300" />
+                      </span>
+                      <motion.svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        <span className="text-black text-5xl font-black">
-                          {service.number}
-                        </span>
-                      </motion.div>
-                    </div>
-
-                    {/* Content */}
-                    <div
-                      className={
-                        index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
-                      }
-                    >
-                      <h3 className="text-5xl md:text-7xl font-black text-black mb-8 leading-none group-hover:text-yellow-600 transition-colors duration-300">
-                        {service.title}
-                      </h3>
-
-                      <p className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed mb-12">
-                        {service.description}
-                      </p>
-
-                      <div className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300 font-bold">
-                        <span className="text-lg">Découvrir le service</span>
-                        <svg
-                          className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </div>
-                    </div>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </motion.svg>
+                    </motion.div>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
+
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: 'radial-gradient(circle at 50% 100%, rgba(255, 214, 0, 0.15) 0%, transparent 70%)',
+                    }}
+                  />
+                </motion.div>
+              </Link>
+            </motion.div>
+
+            {/* Card 2 - Medium with Image (Signalisation Verticale) */}
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="col-span-12 lg:col-span-5 row-span-1"
+            >
+              <Link href={services[1].href} className="group block h-full">
+                <motion.div
+                  whileHover={{ scale: 0.98 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="relative h-full rounded-[2.5rem] overflow-hidden bg-black shadow-2xl"
+                >
+                  {/* Parallax Image */}
+                  <motion.div
+                    className="absolute inset-0"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <Image
+                      src={services[1].image}
+                      alt={services[1].title}
+                      fill
+                      className="object-cover opacity-60"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                  </motion.div>
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 rounded-xl bg-yellow-400 flex items-center justify-center">
+                        <span className="text-black text-xl font-black">{services[1].number}</span>
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-yellow-400 to-transparent" />
+                    </div>
+
+                    <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-4 group-hover:text-yellow-400 transition-colors duration-300">
+                      {services[1].title}
+                    </h3>
+
+                    <p className="text-base text-gray-300 leading-relaxed mb-6">
+                      {services[1].description}
+                    </p>
+
+                    <motion.div
+                      className="group/cta inline-flex items-center gap-3 text-yellow-400 font-bold text-lg"
+                      whileHover={{ x: 8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span className="relative">
+                        En savoir plus
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover/cta:w-full transition-all duration-300" />
+                      </span>
+                      <motion.svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </motion.svg>
+                    </motion.div>
+                  </div>
+
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: 'radial-gradient(circle at 50% 100%, rgba(255, 214, 0, 0.15) 0%, transparent 70%)',
+                    }}
+                  />
+                </motion.div>
+              </Link>
+            </motion.div>
+
+            {/* Card 3 - Medium with Image (Mobilier Urbain) */}
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="col-span-12 lg:col-span-5 row-span-1"
+            >
+              <Link href={services[2].href} className="group block h-full">
+                <motion.div
+                  whileHover={{ scale: 0.98 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="relative h-full rounded-[2.5rem] overflow-hidden bg-white shadow-xl border-2 border-gray-100"
+                >
+                  {/* Image with Parallax */}
+                  <motion.div
+                    className="absolute inset-0"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Image
+                      src={services[2].image}
+                      alt={services[2].title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                  </motion.div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-yellow-400 flex items-center justify-center">
+                        <span className="text-black text-lg font-black">{services[2].number}</span>
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-yellow-400 to-transparent" />
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-3 group-hover:text-yellow-400 transition-colors">
+                      {services[2].title}
+                    </h3>
+                    <p className="text-base text-gray-300 leading-relaxed mb-6">
+                      {services[2].description}
+                    </p>
+                    
+                    <motion.div
+                      className="group/cta inline-flex items-center gap-3 text-yellow-400 font-bold text-lg"
+                      whileHover={{ x: 8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span className="relative">
+                        En savoir plus
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover/cta:w-full transition-all duration-300" />
+                      </span>
+                      <motion.svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </motion.svg>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </Link>
+            </motion.div>
+
           </div>
+
+          {/* CTA Bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-20 text-center"
+          >
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-4 px-12 py-6 bg-black text-white rounded-full text-lg font-bold hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-2xl hover:shadow-yellow-400/20"
+            >
+              <span>Démarrer votre projet</span>
+              <motion.svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                animate={{
+                  x: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </motion.svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

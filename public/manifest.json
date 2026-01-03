@@ -1,0 +1,20 @@
+{
+  "name": "GL Marquage",
+  "short_name": "GL Marquage",
+  "description": "Expert en marquage au sol, signalisation routière et mobilier urbain en Savoie et Rhône-Alpes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FFD600",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "fr"
+}
