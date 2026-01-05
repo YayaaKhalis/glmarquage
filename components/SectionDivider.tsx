@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 interface SectionDividerProps {
-  variant?: "glow" | "particle" | "wave" | "pulse";
+  variant?: "glow" | "particle" | "wave" | "pulse" | "masterpiece";
   className?: string;
 }
 
@@ -223,6 +223,17 @@ export default function SectionDivider({
         >
           <div className="w-32 h-16 bg-gradient-to-r from-transparent via-yellow-400 to-transparent blur-xl opacity-60" />
         </motion.div>
+      </div>
+    );
+  }
+
+  if (variant === "masterpiece") {
+    return (
+      <div ref={ref} className={`absolute bottom-0 left-0 right-0 ${className}`}>
+        {/* Main refined line */}
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-80" />
+        {/* Glow effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-30 blur-sm" />
       </div>
     );
   }

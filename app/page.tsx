@@ -80,7 +80,10 @@ export default function Home() {
       <Header />
 
       {/* Hero Section Option 3: Cinematic */}
-      <HeroCinematic />
+      <div className="relative">
+        <HeroCinematic />
+        <SectionDivider variant="masterpiece" />
+      </div>
 
       {/* Introduction / À propos - PREMIUM DESIGN */}
       <section className="relative py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
@@ -267,6 +270,8 @@ export default function Home() {
 
           </div>
         </div>
+      {/* Divider - Modern Refined Line */}
+      <SectionDivider variant="masterpiece" />
       </section>
 
       {/* Project Workflow Timeline - Separator */}
@@ -427,10 +432,12 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
+        
+        {/* Divider - Modern Refined Line */}
+        <SectionDivider variant="masterpiece" />
       </div>
 
-      {/* Divider 2 - Particle Trail Effect */}
-      <SectionDivider variant="particle" />
+
 
       {/* Services - ASYMMETRIC BENTO BOX DESIGN - Bold Modern Background */}
       <section className="relative py-40 bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 overflow-hidden">
@@ -770,10 +777,9 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
+      {/* Divider - Modern Refined Line */}
+      <SectionDivider variant="masterpiece" />
       </section>
-
-      {/* Divider 3 - Wave Effect */}
-      <SectionDivider variant="wave" />
 
       {/* Avantages - SPECTACULAR PREMIUM DESIGN */}
       <section className="relative py-40 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden">
@@ -1057,10 +1063,9 @@ export default function Home() {
             }
           }
         `}</style>
+      {/* Divider - Modern Refined Line */}
+      <SectionDivider variant="masterpiece" />
       </section>
-
-      {/* Divider 4 - Pulse Rings Effect */}
-      <SectionDivider variant="pulse" />
 
       {/* Zone d'Intervention - PREMIUM INTERACTIVE DESIGN */}
       <section className="relative py-40 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 overflow-hidden">
@@ -1383,10 +1388,9 @@ export default function Home() {
           </motion.div>
 
         </div>
+      {/* Divider - Modern Refined Line */}
+      <SectionDivider variant="masterpiece" />
       </section>
-
-      {/* Divider 5 - Glow Effect */}
-      <SectionDivider variant="glow" />
 
       {/* Réalisations - Ultra Modern Gallery */}
       <section
@@ -1407,9 +1411,7 @@ export default function Home() {
         {/* Diagonal Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-gray-200/40" />
 
-        {/* Decorative Yellow Accents */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+
 
         {/* Corner Glows - Different colors */}
         <div className="absolute top-10 right-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl" />
@@ -1745,10 +1747,9 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
+      {/* Divider - Modern Refined Line */}
+      <SectionDivider variant="masterpiece" />
       </section>
-
-      {/* Divider 6 - Particle Trail Effect */}
-      <SectionDivider variant="particle" />
 
       {/* Contact - Modern CTA Section */}
       <section
@@ -1775,7 +1776,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-transparent" />
 
         {/* Top Border Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           {/* Split Layout Header */}
