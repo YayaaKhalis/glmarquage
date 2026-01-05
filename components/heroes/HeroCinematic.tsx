@@ -243,10 +243,10 @@ export default function HeroCinematic() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-yellow-400"
+          className="flex flex-col items-center gap-6 text-yellow-400"
         >
-          <span className="text-sm font-bold uppercase tracking-wider rotate-90 origin-center mb-8">Scroll</span>
-          <div className="w-0.5 h-16 bg-gradient-to-b from-yellow-400 to-transparent" />
+          <span className="text-sm font-bold uppercase tracking-wider rotate-90 origin-center">En savoir plus</span>
+          <div className="w-0.5 h-16 bg-gradient-to-b from-yellow-400 to-transparent mt-12" />
         </motion.div>
       </motion.div>
     </section>
