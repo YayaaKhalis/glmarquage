@@ -8,6 +8,11 @@ import Footer from "@/components/layout/Footer";
 import HeroCinematic from "@/components/heroes/HeroCinematic";
 import SectionDivider from "@/components/SectionDivider";
 import RoadDivider from "@/components/RoadDivider";
+import ScrollReveal from "@/components/animations/ScrollReveal";
+import ParallaxSection from "@/components/animations/ParallaxSection";
+import StaggerContainer, { StaggerItem } from "@/components/animations/StaggerContainer";
+import MagneticButton from "@/components/animations/MagneticButton";
+import SmoothScroll from "@/components/animations/SmoothScroll";
 
 export default function Home() {
   const services = [
@@ -77,6 +82,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SmoothScroll />
       <Header />
 
       {/* Hero Section Option 3: Cinematic */}
@@ -88,185 +94,178 @@ export default function Home() {
       {/* Introduction / À propos - PREMIUM DESIGN */}
       <section className="relative py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
         {/* Floating Orbs Background */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <ParallaxSection speed={0.3} className="absolute top-20 left-10 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl" />
+        <ParallaxSection speed={0.5} className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            
+
             {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <ScrollReveal variant="slideRight" duration={0.9}>
               {/* Badge animé */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-3 px-5 py-2 mb-8 rounded-full bg-yellow-400/10 border border-yellow-400/20"
-              >
-                <motion.div
-                  className="w-2 h-2 bg-yellow-400 rounded-full"
-                  animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <span className="text-sm font-bold text-yellow-600 uppercase tracking-wider">
-                  GL Marquage
-                </span>
-              </motion.div>
+              <ScrollReveal variant="zoomIn" delay={0.1}>
+                <div className="inline-flex items-center gap-3 px-5 py-2 mb-8 rounded-full bg-yellow-400/10 border border-yellow-400/20">
+                  <motion.div
+                    className="w-2 h-2 bg-yellow-400 rounded-full"
+                    animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span className="text-sm font-bold text-yellow-600 uppercase tracking-wider">
+                    GL Marquage
+                  </span>
+                </div>
+              </ScrollReveal>
 
               {/* Title with Gradient */}
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1]"
-              >
-                <span className="block text-black">Votre partenaire</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600">
-                  de confiance
-                </span>
-                <span className="block text-black">en signalisation</span>
-              </motion.h2>
+              <ScrollReveal variant="slideUp" delay={0.2}>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1]">
+                  <motion.span
+                    className="block text-black"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                  >
+                    Votre partenaire
+                  </motion.span>
+                  <motion.span
+                    className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                  >
+                    de confiance
+                  </motion.span>
+                  <motion.span
+                    className="block text-black"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                  >
+                    en signalisation
+                  </motion.span>
+                </h2>
+              </ScrollReveal>
 
               {/* Description avec icônes */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="space-y-6 mb-10"
-              >
-                <p className="text-xl text-gray-700 leading-relaxed">
-                  <strong className="text-black font-bold">GL Marquage</strong> est une entreprise spécialisée dans la{" "}
-                  <span className="text-yellow-600 font-semibold">signalisation routière</span>, le{" "}
-                  <span className="text-yellow-600 font-semibold">marquage au sol</span> et l'
-                  <span className="text-yellow-600 font-semibold">aménagement urbain</span> en Savoie et Rhône-Alpes.
-                </p>
-                
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Forte de <strong className="text-black">plus de 15 ans d'expérience</strong>, notre équipe intervient auprès des collectivités, entreprises et particuliers avec un engagement sans faille pour la qualité et la conformité.
-                </p>
-              </motion.div>
+              <ScrollReveal variant="fadeIn" delay={0.4}>
+                <div className="space-y-6 mb-10">
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    <strong className="text-black font-bold">GL Marquage</strong> est une entreprise spécialisée dans la{" "}
+                    <span className="text-yellow-600 font-semibold">signalisation routière</span>, le{" "}
+                    <span className="text-yellow-600 font-semibold">marquage au sol</span> et l'
+                    <span className="text-yellow-600 font-semibold">aménagement urbain</span> en Savoie et Rhône-Alpes.
+                  </p>
+
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    Forte de <strong className="text-black">plus de 15 ans d'expérience</strong>, notre équipe intervient auprès des collectivités, entreprises et particuliers avec un engagement sans faille pour la qualité et la conformité.
+                  </p>
+                </div>
+              </ScrollReveal>
 
               {/* Key features avec icônes */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
-              >
+              <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
                 {[
-                  { icon: '✓', label: 'Certifié NF', color: 'yellow' },
-                  { icon: '⚡', label: 'Réponse 24h', color: 'yellow' },
-                  { icon: '🌱', label: 'Éco-responsable', color: 'yellow' },
+                  { icon: '✓', label: 'Certifié NF' },
+                  { icon: '⚡', label: 'Réponse 24h' },
+                  { icon: '🌱', label: 'Éco-responsable' },
                 ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.6 + i * 0.1 }}
-                    className="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center text-black font-black text-lg">
-                      {item.icon}
-                    </div>
-                    <span className="font-bold text-gray-800 text-sm">{item.label}</span>
-                  </motion.div>
+                  <StaggerItem key={i}>
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow cursor-pointer"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center text-black font-black text-lg">
+                        {item.icon}
+                      </div>
+                      <span className="font-bold text-gray-800 text-sm">{item.label}</span>
+                    </motion.div>
+                  </StaggerItem>
                 ))}
-              </motion.div>
+              </StaggerContainer>
 
               {/* CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7 }}
-              >
-                <Link
-                  href="#contact"
-                  className="group inline-flex items-center gap-3 px-10 py-5 bg-black text-white rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20"
-                >
-                  <span>Demander un devis</span>
-                  <motion.svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              <ScrollReveal variant="slideUp" delay={0.6}>
+                <MagneticButton strength={0.2}>
+                  <Link
+                    href="#contact"
+                    className="group inline-flex items-center gap-3 px-10 py-5 bg-black text-white rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </motion.svg>
-                </Link>
-              </motion.div>
-            </motion.div>
+                    <span>Demander un devis</span>
+                    <motion.svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </motion.svg>
+                  </Link>
+                </MagneticButton>
+              </ScrollReveal>
+            </ScrollReveal>
 
             {/* Right - Image with floating stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="relative"
-            >
-              {/* Main Image */}
-              <div className="relative h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                <Image
-                  src="/Design sans titre.png"
-                  alt="GL Marquage - Votre partenaire de confiance"
-                  fill
-                  className="object-contain p-12"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Image Overlay - Subtle radial for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            <ScrollReveal variant="slideLeft" duration={0.9} delay={0.2}>
+              <div className="relative">
+                {/* Main Image avec Parallax */}
+                <ParallaxSection speed={0.2}>
+                  <motion.div
+                    whileHover={{ scale: 1.02, rotate: 1 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10"
+                  >
+                    <Image
+                      src="/Design sans titre.png"
+                      alt="GL Marquage - Votre partenaire de confiance"
+                      fill
+                      className="object-contain p-12"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    {/* Image Overlay - Subtle radial for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  </motion.div>
+                </ParallaxSection>
+
+                {/* Floating Stats Cards avec effet 3D */}
+                <ScrollReveal variant="rotateIn" delay={0.5}>
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: -3 }}
+                    className="absolute -bottom-8 -left-8 bg-gradient-to-br from-yellow-400 to-yellow-500 text-black rounded-3xl p-8 shadow-2xl border-4 border-white"
+                  >
+                    <div className="text-5xl font-black mb-2">15+</div>
+                    <div className="text-sm font-bold uppercase tracking-wider">Ans d'expertise</div>
+                  </motion.div>
+                </ScrollReveal>
+
+                <ScrollReveal variant="rotateIn" delay={0.7}>
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 3 }}
+                    className="absolute -top-8 -right-8 bg-white text-black rounded-3xl p-6 shadow-2xl border-2 border-gray-100"
+                  >
+                    <div className="text-4xl font-black mb-1 text-yellow-500">500+</div>
+                    <div className="text-xs font-bold text-gray-700 uppercase">Projets réalisés</div>
+                  </motion.div>
+                </ScrollReveal>
+
+                {/* Decorative elements avec parallax */}
+                <ParallaxSection speed={0.4}>
+                  <motion.div
+                    className="absolute top-1/2 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </ParallaxSection>
               </div>
-
-              {/* Floating Stats Cards */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, type: "spring" }}
-                className="absolute -bottom-8 -left-8 bg-gradient-to-br from-yellow-400 to-yellow-500 text-black rounded-3xl p-8 shadow-2xl border-4 border-white"
-              >
-                <div className="text-5xl font-black mb-2">15+</div>
-                <div className="text-sm font-bold uppercase tracking-wider">Ans d'expertise</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7, type: "spring" }}
-                className="absolute -top-8 -right-8 bg-white text-black rounded-3xl p-6 shadow-2xl border-2 border-gray-100"
-              >
-                <div className="text-4xl font-black mb-1 text-yellow-500">500+</div>
-                <div className="text-xs font-bold text-gray-700 uppercase">Projets réalisés</div>
-              </motion.div>
-
-              {/* Decorative elements */}
-              <motion.div
-                className="absolute top-1/2 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </motion.div>
+            </ScrollReveal>
 
           </div>
         </div>
@@ -441,8 +440,8 @@ export default function Home() {
 
       {/* Services - ASYMMETRIC BENTO BOX DESIGN - Bold Modern Background */}
       <section className="relative py-40 bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 overflow-hidden">
-        {/* Diagonal Stripe Pattern - Visible */}
-        <div 
+        {/* Diagonal Stripe Pattern - Visible avec animation */}
+        <motion.div
           className="absolute inset-0 opacity-[0.4]"
           style={{
             backgroundImage: `repeating-linear-gradient(
@@ -453,16 +452,24 @@ export default function Home() {
               rgba(251, 191, 36, 0.03) 120px
             )`,
           }}
+          animate={{
+            backgroundPosition: ['0px 0px', '120px 120px'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
         />
-        
-        {/* Large Yellow Accent Circle - Top Right */}
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-yellow-400/10 rounded-full blur-3xl" />
-        
-        {/* Large Yellow Accent Circle - Bottom Left */}
-        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-yellow-500/10 rounded-full blur-3xl" />
-        
+
+        {/* Large Yellow Accent Circle - Top Right avec parallax */}
+        <ParallaxSection speed={0.3} className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-yellow-400/10 rounded-full blur-3xl" />
+
+        {/* Large Yellow Accent Circle - Bottom Left avec parallax */}
+        <ParallaxSection speed={0.5} className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-yellow-500/10 rounded-full blur-3xl" />
+
         {/* Dot Grid Pattern Overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.15]"
           style={{
             backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)`,
@@ -472,40 +479,52 @@ export default function Home() {
 
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative">
           {/* Header - Minimalist Luxury */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-24"
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <motion.div
-                className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
-                initial={{ width: 0 }}
-                whileInView={{ width: 120 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.3 }}
-              />
-              <span className="text-sm font-semibold text-yellow-600 uppercase tracking-[0.2em]">
-                Excellence
-              </span>
+          <ScrollReveal variant="slideUp" duration={0.9}>
+            <div className="mb-24">
+              <div className="flex items-center gap-4 mb-8">
+                <motion.div
+                  className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 120 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                />
+                <span className="text-sm font-semibold text-yellow-600 uppercase tracking-[0.2em]">
+                  Excellence
+                </span>
+              </div>
+
+              <h2 className="text-7xl md:text-8xl lg:text-9xl font-black leading-[0.9] mb-8">
+                <motion.span
+                  className="block text-black"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                >
+                  Notre
+                </motion.span>
+                <motion.span
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                >
+                  Expertise
+                </motion.span>
+              </h2>
+
+              <ScrollReveal variant="fadeIn" delay={0.6}>
+                <p className="text-2xl md:text-3xl text-gray-600 font-light max-w-3xl leading-relaxed">
+                  Des solutions{" "}
+                  <span className="text-black font-medium italic">professionnelles</span> et{" "}
+                  <span className="text-black font-medium italic">durables</span>{" "}
+                  pour tous vos besoins
+                </p>
+              </ScrollReveal>
             </div>
-
-            <h2 className="text-7xl md:text-8xl lg:text-9xl font-black leading-[0.9] mb-8">
-              <span className="block text-black">Notre</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600">
-                Expertise
-              </span>
-            </h2>
-
-            <p className="text-2xl md:text-3xl text-gray-600 font-light max-w-3xl leading-relaxed">
-              Des solutions{" "}
-              <span className="text-black font-medium italic">professionnelles</span> et{" "}
-              <span className="text-black font-medium italic">durables</span>{" "}
-              pour tous vos besoins
-            </p>
-          </motion.div>
+          </ScrollReveal>
 
           {/* Bento Grid Layout - Asymmetric */}
           <div className="grid grid-cols-12 gap-6 auto-rows-[500px]">

@@ -6,9 +6,13 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import Lightbox from '@/components/Lightbox';
+import { Eye, MapPin } from 'lucide-react';
 
 export default function Realisations() {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const categories = [
     { id: 'all', label: 'Toutes' },
@@ -93,8 +97,8 @@ export default function Realisations() {
         </div>
       </section>
 
-      {/* Gallery Grid */}
-      <section className="py-32 bg-white">
+      {/* Gallery Grid avec Lightbox */}
+      <section className="py-32 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0 }}
@@ -109,7 +113,12 @@ export default function Realisations() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
+                onClick={() => {
+                  const filteredIndex = filteredRealisations.findIndex(r => r.id === realisation.id);
+                  setSelectedImageIndex(filteredIndex);
+                  setLightboxOpen(true);
+                }}
+                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer relative"
               >
                 <div className="relative h-80 overflow-hidden">
                   <Image
@@ -120,18 +129,32 @@ export default function Realisations() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
+                  {/* Bouton "Voir" au centre - apparaît au hover */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ scale: 0.8 }}
+                    whileHover={{ scale: 1 }}
+                  >
+                    <div className="flex items-center gap-2 px-6 py-3 bg-yellow-400 text-black rounded-full font-black shadow-2xl">
+                      <Eye className="w-5 h-5" />
+                      <span>Voir en grand</span>
+                    </div>
+                  </motion.div>
+
                   {/* Content Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <h3 className="text-2xl font-black mb-2 group-hover:text-yellow-400 transition-colors">
                       {realisation.title}
                     </h3>
                     <div className="flex items-center gap-2 text-sm text-white/80">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
+                      <MapPin className="w-4 h-4" />
                       {realisation.location}
                     </div>
+                  </div>
+
+                  {/* Badge de catégorie */}
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-xs font-bold text-white border border-white/20">
+                    {realisation.category === 'horizontale' ? 'Marquage' : realisation.category === 'verticale' ? 'Signalisation' : 'Mobilier'}
                   </div>
                 </div>
               </motion.div>
@@ -145,6 +168,16 @@ export default function Realisations() {
           )}
         </div>
       </section>
+
+      {/* Lightbox */}
+      <Lightbox
+        images={filteredRealisations.map(r => r.image)}
+        currentIndex={selectedImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        titles={filteredRealisations.map(r => r.title)}
+        descriptions={filteredRealisations.map(r => r.location)}
+      />
 
       {/* CTA Section */}
       <section className="py-32 bg-black text-white">

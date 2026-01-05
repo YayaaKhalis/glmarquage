@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hoveredService, setHoveredService] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,27 +115,86 @@ export default function Header() {
                 >
                   {[
                     { name: 'Accueil', href: '/' },
-                    { name: 'Services', href: '#services' },
+                    { 
+                      name: 'Services', 
+                      href: '#services',
+                      dropdown: true 
+                    },
                     { name: 'Réalisations', href: '#realisations' },
                     { name: 'Contact', href: '#contact' },
                   ].map((item, index) => (
-                    <motion.div
+                    <div
                       key={item.name}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 + index * 0.05 }}
+                      onMouseEnter={() => item.dropdown && setHoveredService(true)}
+                      onMouseLeave={() => item.dropdown && setHoveredService(false)}
+                      className="relative"
                     >
-                      <Link
-                        href={item.href}
-                        className="relative px-4 py-2 text-sm font-bold text-white hover:text-yellow-400 transition-all duration-300 rounded-full hover:bg-white/10 group"
-                        style={{
-                          textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5)',
-                        }}
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 + index * 0.05 }}
                       >
-                        {item.name}
-                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-yellow-400 rounded-full transition-all duration-300 group-hover:w-1/2" />
-                      </Link>
-                    </motion.div>
+                        <Link
+                          href={item.href}
+                          className="relative px-4 py-2 text-sm font-bold text-white hover:text-yellow-400 transition-all duration-300 rounded-full hover:bg-white/10 group block"
+                          style={{
+                            textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5)',
+                          }}
+                        >
+                          <span className="flex items-center gap-1">
+                            {item.name}
+                            {item.dropdown && (
+                              <svg className={`w-3 h-3 transition-transform duration-300 ${hoveredService ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            )}
+                          </span>
+                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-yellow-400 rounded-full transition-all duration-300 group-hover:w-1/2" />
+                        </Link>
+                      </motion.div>
+
+                      {/* Dropdown Menu */}
+                      <AnimatePresence>
+                        {item.dropdown && hoveredService && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64"
+                          >
+                           <div 
+                              className="rounded-2xl overflow-hidden py-2"
+                              style={{
+                                background: 'rgba(0, 0, 0, 0.8)',
+                                backdropFilter: 'blur(20px) saturate(180%)',
+                                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                              }}
+                            >
+                              {[
+                                { name: 'Signalisation Horizontale', href: '/signalisation-horizontale' },
+                                { name: 'Signalisation Verticale', href: '/signalisation-verticale' },
+                                { name: 'Mobilier Urbain', href: '/mobilier-urbain' }
+                              ].map((subItem, idx) => (
+                                <Link
+                                  key={idx}
+                                  href={subItem.href}
+                                  className="block px-6 py-3 text-sm font-bold text-white hover:bg-white/10 hover:text-yellow-400 transition-colors relative group"
+                                  style={{
+                                    textShadow: '0 1px 2px rgba(0,0,0,0.8)',
+                                  }}
+                                >
+                                  {subItem.name}
+                                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-center" />
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   ))}
                   {/* CTA Button in navbar */}
                   <motion.div
