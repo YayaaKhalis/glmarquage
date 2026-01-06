@@ -77,19 +77,8 @@ export default function Lightbox({
             initial={{ backdropFilter: 'blur(0px)' }}
             animate={{ backdropFilter: 'blur(20px)' }}
             exit={{ backdropFilter: 'blur(0px)' }}
-            className="absolute inset-0 bg-black/95"
+            className="absolute inset-0 bg-black/97"
           />
-
-          {/* Grille animée de fond */}
-          <div className="absolute inset-0 opacity-10">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle, rgba(251, 191, 36, 0.3) 1px, transparent 1px)`,
-                backgroundSize: '40px 40px',
-              }}
-            />
-          </div>
 
           {/* Contenu principal */}
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-8">
@@ -171,43 +160,26 @@ export default function Lightbox({
             {/* Image principale avec animations */}
             <motion.div
               key={currentImageIndex}
-              initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-              animate={{ opacity: 1, scale: isZoomed ? 1.5 : 1, rotateY: 0 }}
-              exit={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: isZoomed ? 1.3 : 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               transition={{
-                duration: 0.5,
+                duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
               }}
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-7xl max-h-[80vh] w-full h-full flex items-center justify-center"
-              style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
             >
-              {/* Effet de glow derrière l'image */}
-              <div className="absolute inset-0 bg-yellow-400/20 blur-[100px] rounded-full" />
-
               {/* Container de l'image */}
               <div className="relative w-full h-full flex items-center justify-center">
-                <div className="relative w-full h-full max-w-5xl max-h-[70vh]">
+                <div className="relative w-full h-full max-w-6xl max-h-[75vh] rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src={images[currentImageIndex]}
                     alt={titles?.[currentImageIndex] || `Image ${currentImageIndex + 1}`}
                     fill
-                    className="object-contain rounded-2xl"
+                    className="object-contain"
                     quality={100}
                     priority
-                  />
-
-                  {/* Bordure lumineuse animée */}
-                  <motion.div
-                    className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-2xl opacity-20 blur-xl"
-                    animate={{
-                      opacity: [0.2, 0.4, 0.2],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
                   />
                 </div>
               </div>
@@ -220,16 +192,18 @@ export default function Lightbox({
                 animate={{ opacity: 1, y: 0 }}
                 className="absolute bottom-24 left-1/2 -translate-x-1/2 max-w-2xl w-full px-6 text-center"
               >
-                {titles?.[currentImageIndex] && (
-                  <h3 className="text-2xl md:text-3xl font-black text-white mb-2">
-                    {titles[currentImageIndex]}
-                  </h3>
-                )}
-                {descriptions?.[currentImageIndex] && (
-                  <p className="text-white/80 text-sm md:text-base">
-                    {descriptions[currentImageIndex]}
-                  </p>
-                )}
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-2xl">
+                  {titles?.[currentImageIndex] && (
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2 drop-shadow-lg">
+                      {titles[currentImageIndex]}
+                    </h3>
+                  )}
+                  {descriptions?.[currentImageIndex] && (
+                    <p className="text-white font-semibold text-sm md:text-base drop-shadow-md">
+                      {descriptions[currentImageIndex]}
+                    </p>
+                  )}
+                </div>
               </motion.div>
             )}
 
@@ -239,7 +213,7 @@ export default function Lightbox({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="absolute bottom-32 md:bottom-24 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-full px-4"
+                className="absolute bottom-32 md:bottom-24 left-1/2 -translate-x-1/2 flex gap-3 overflow-x-auto max-w-full px-4 scrollbar-hide"
                 onClick={(e) => e.stopPropagation()}
               >
                 {images.map((img, idx) => (
@@ -251,10 +225,10 @@ export default function Lightbox({
                     }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`relative w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden border-3 transition-all shadow-lg ${
                       idx === currentImageIndex
-                        ? 'border-yellow-400 opacity-100 scale-110'
-                        : 'border-white/20 opacity-50 hover:opacity-100'
+                        ? 'border-white opacity-100 ring-2 ring-white/50'
+                        : 'border-white/30 opacity-60 hover:opacity-100 hover:border-white/60'
                     }`}
                   >
                     <Image src={img} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />

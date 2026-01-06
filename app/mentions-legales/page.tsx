@@ -8,7 +8,7 @@ export default function MentionsLegales() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center justify-center bg-black overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center justify-center bg-black overflow-hidden pt-32">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 text-center">
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]">
@@ -65,22 +65,48 @@ export default function MentionsLegales() {
               </h2>
               <div className="bg-gray-50 rounded-2xl p-8">
                 <p className="text-gray-700">
-                  Ce site est hébergé par <strong className="text-black">Vercel Inc.</strong>
+                  Ce site est hébergé par <strong className="text-black">OVH SAS</strong>
                 </p>
                 <p className="text-gray-700 mt-2">
-                  440 N Barranca Ave #4133<br />
-                  Covina, CA 91723<br />
-                  États-Unis
+                  2 rue Kellermann<br />
+                  59100 Roubaix<br />
+                  France
                 </p>
                 <p className="text-gray-700 mt-2">
                   Site web :{' '}
                   <a 
-                    href="https://vercel.com" 
+                    href="https://www.ovh.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-yellow-600 hover:text-yellow-700"
                   >
-                    https://vercel.com
+                    www.ovh.com
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            {/* Création du site */}
+            <div className="mb-12">
+              <h2 className="text-3xl font-black text-black mb-6" id="creation">
+                3. Conception et développement
+              </h2>
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <p className="text-gray-700">
+                  Ce site a été conçu et développé par <strong className="text-black">Matixweb</strong>
+                </p>
+                <p className="text-gray-700 mt-2">
+                  Agence de création de sites web
+                </p>
+                <p className="text-gray-700 mt-2">
+                  Site web :{' '}
+                  <a 
+                    href="https://matixweb.fr" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-yellow-600 hover:text-yellow-700 font-bold"
+                  >
+                    matixweb.fr
                   </a>
                 </p>
               </div>
@@ -89,7 +115,7 @@ export default function MentionsLegales() {
             {/* Propriété intellectuelle */}
             <div className="mb-12">
               <h2 className="text-3xl font-black text-black mb-6" id="propriete">
-                3. Propriété Intellectuelle
+                4. Propriété Intellectuelle
               </h2>
               <p className="text-gray-700 leading-relaxed">
                 L&apos;ensemble du contenu de ce site (textes, images, logo, graphismes, icônes) est la propriété 
@@ -102,7 +128,7 @@ export default function MentionsLegales() {
             {/* Politique de confidentialité */}
             <div className="mb-12">
               <h2 className="text-3xl font-black text-black mb-6" id="confidentialite">
-                4. Politique de Confidentialité
+                5. Politique de Confidentialité
               </h2>
               
               <h3 className="text-xl font-bold text-black mt-8 mb-4">
@@ -157,7 +183,7 @@ export default function MentionsLegales() {
             {/* Cookies */}
             <div className="mb-12">
               <h2 className="text-3xl font-black text-black mb-6" id="cookies">
-                5. Cookies
+                6. Cookies
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Ce site utilise uniquement des cookies techniques essentiels au bon fonctionnement du site. 
@@ -168,7 +194,7 @@ export default function MentionsLegales() {
             {/* Responsabilité */}
             <div className="mb-12">
               <h2 className="text-3xl font-black text-black mb-6" id="responsabilite">
-                6. Limitation de Responsabilité
+                7. Limitation de Responsabilité
               </h2>
               <p className="text-gray-700 leading-relaxed">
                 GL Marquage s&apos;efforce d&apos;assurer l&apos;exactitude des informations présentes sur ce site. 
@@ -180,7 +206,7 @@ export default function MentionsLegales() {
             {/* Droit applicable */}
             <div className="mb-12">
               <h2 className="text-3xl font-black text-black mb-6" id="droit">
-                7. Droit Applicable
+                8. Droit Applicable
               </h2>
               <p className="text-gray-700 leading-relaxed">
                 Les présentes mentions légales sont régies par le droit français. En cas de litige, 

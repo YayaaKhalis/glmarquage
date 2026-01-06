@@ -5,7 +5,11 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Header() {
+interface HeaderProps {
+  hideLogo?: boolean;
+}
+
+export default function Header({ hideLogo = false }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredService, setHoveredService] = useState(false);
@@ -32,7 +36,6 @@ export default function Header() {
     { name: 'Signalisation Horizontale', href: '/signalisation-horizontale' },
     { name: 'Signalisation Verticale', href: '/signalisation-verticale' },
     { name: 'Mobilier Urbain', href: '/mobilier-urbain' },
-    { name: 'Réalisations', href: '/realisations' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -46,9 +49,9 @@ export default function Header() {
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6">
           <div className="flex justify-between items-center pointer-events-auto">
-            {/* Logo with Scroll Effect - Hidden when menu is open */}
+            {/* Logo with Scroll Effect - Hidden when menu is open or hideLogo is true */}
             <AnimatePresence>
-              {!menuOpen && (
+              {!menuOpen && !hideLogo && (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -96,6 +99,9 @@ export default function Header() {
               )}
             </AnimatePresence>
 
+            {/* Spacer when logo is hidden to keep menu button on right */}
+            {hideLogo && !menuOpen && <div className="w-1" />}
+
             {/* Liquid Glass Navbar - Visible when NOT scrolled AND menu closed (Desktop) - Centered */}
             <AnimatePresence>
               {!scrolled && !menuOpen && (
@@ -117,11 +123,10 @@ export default function Header() {
                     { name: 'Accueil', href: '/' },
                     { 
                       name: 'Services', 
-                      href: '#services',
+                      href: '/signalisation-horizontale',
                       dropdown: true 
                     },
-                    { name: 'Réalisations', href: '#realisations' },
-                    { name: 'Contact', href: '#contact' },
+                    { name: 'Contact', href: '/contact' },
                   ].map((item, index) => (
                     <div
                       key={item.name}

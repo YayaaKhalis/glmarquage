@@ -19,16 +19,6 @@ export default function Footer() {
             <p className="text-slate-400 leading-relaxed text-lg font-light">
               Expert en signalisation routière, marquage au sol et mobilier urbain.
             </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://instagram.com/glmarquage"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-yellow-400 transition-all group border border-white/10"
-              >
-                <span className="text-2xl">📸</span>
-              </a>
-            </div>
           </div>
 
           {/* Services */}
@@ -48,11 +38,6 @@ export default function Footer() {
               <li>
                 <Link href="/mobilier-urbain" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
                   Mobilier Urbain
-                </Link>
-              </li>
-              <li>
-                <Link href="/#realisations" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
-                  Nos Réalisations
                 </Link>
               </li>
             </ul>
@@ -75,10 +60,10 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-2xl">📍</span>
-                <span className="text-slate-400 text-lg font-light">
-                  Savoie & Rhône-Alpes
-                </span>
+                <span className="text-2xl">📸</span>
+                <a href="https://www.instagram.com/glmarquage/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-yellow-400 transition-colors text-lg font-light">
+                  @glmarquage
+                </a>
               </li>
             </ul>
           </div>
@@ -116,11 +101,14 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 font-light">
-              &copy; {new Date().getFullYear()} GL Marquage. Tous droits réservés.
-            </p>
             <p className="text-sm text-slate-500 font-light">
               SIRET : 937 558 476 00019
+            </p>
+            <Link href="/mentions-legales" className="text-sm text-slate-500 hover:text-yellow-400 transition-colors font-light">
+              Mentions légales
+            </Link>
+            <p className="text-slate-400 font-light">
+              &copy; {new Date().getFullYear()} GL Marquage. Tous droits réservés.
             </p>
           </div>
         </div>

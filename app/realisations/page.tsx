@@ -118,16 +118,16 @@ export default function Realisations() {
                   setSelectedImageIndex(filteredIndex);
                   setLightboxOpen(true);
                 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer relative"
+                className="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer relative"
               >
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-80 overflow-hidden rounded-2xl">
                   <Image
                     src={realisation.image}
                     alt={realisation.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
 
                   {/* Bouton "Voir" au centre - apparaît au hover */}
                   <motion.div
@@ -135,25 +135,27 @@ export default function Realisations() {
                     initial={{ scale: 0.8 }}
                     whileHover={{ scale: 1 }}
                   >
-                    <div className="flex items-center gap-2 px-6 py-3 bg-yellow-400 text-black rounded-full font-black shadow-2xl">
+                    <div className="flex items-center gap-2 px-8 py-4 bg-white text-black rounded-2xl font-bold shadow-2xl border-2 border-gray-200 hover:bg-gray-50 transition-colors">
                       <Eye className="w-5 h-5" />
                       <span>Voir en grand</span>
                     </div>
                   </motion.div>
 
-                  {/* Content Overlay */}
+                  {/* Content Overlay avec fond amélioré */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-2xl font-black mb-2 group-hover:text-yellow-400 transition-colors">
-                      {realisation.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-sm text-white/80">
-                      <MapPin className="w-4 h-4" />
-                      {realisation.location}
+                    <div className="backdrop-blur-sm bg-black/30 rounded-2xl p-4 border border-white/10">
+                      <h3 className="text-2xl font-black mb-2 drop-shadow-lg">
+                        {realisation.title}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm font-semibold">
+                        <MapPin className="w-4 h-4" />
+                        {realisation.location}
+                      </div>
                     </div>
                   </div>
 
                   {/* Badge de catégorie */}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-xs font-bold text-white border border-white/20">
+                  <div className="absolute top-4 right-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-xl text-xs font-black text-black shadow-lg">
                     {realisation.category === 'horizontale' ? 'Marquage' : realisation.category === 'verticale' ? 'Signalisation' : 'Mobilier'}
                   </div>
                 </div>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroCinematic from "@/components/heroes/HeroCinematic";
@@ -13,8 +14,12 @@ import ParallaxSection from "@/components/animations/ParallaxSection";
 import StaggerContainer, { StaggerItem } from "@/components/animations/StaggerContainer";
 import MagneticButton from "@/components/animations/MagneticButton";
 import SmoothScroll from "@/components/animations/SmoothScroll";
+import Lightbox from "@/components/Lightbox";
 
 export default function Home() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
   const services = [
     {
       title: "Signalisation Horizontale",
@@ -1172,122 +1177,33 @@ export default function Home() {
           {/* Department Cards - Premium Bento Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
-              {
-                code: "73",
-                name: "Savoie",
-                primary: true,
-                description: "Zone prioritaire",
-                cities: "Chambéry, Aix-les-Bains",
-                gradient: "from-yellow-400 to-yellow-500",
-              },
-              {
-                code: "74",
-                name: "Haute-Savoie",
-                primary: true,
-                description: "Zone prioritaire",
-                cities: "Annecy, Annemasse",
-                gradient: "from-yellow-500 to-yellow-600",
-              },
-              {
-                code: "01",
-                name: "Ain",
-                primary: false,
-                description: "Intervention régulière",
-                cities: "Bourg-en-Bresse, Belley",
-              },
-              {
-                code: "38",
-                name: "Isère",
-                primary: false,
-                description: "Intervention régulière",
-                cities: "Grenoble, Vienne",
-              },
+              { code: "73", name: "Savoie", cities: "Chambéry, Aix-les-Bains, Albertville..." },
+              { code: "74", name: "Haute-Savoie", cities: "Annecy, Annemasse, Thonon..." },
+              { code: "01", name: "Ain", cities: "Bourg-en-Bresse, Oyonnax, Belley..." },
+              { code: "38", name: "Isère", cities: "Grenoble, Voiron, Bourgoin..." },
             ].map((zone, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="group"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative p-8 rounded-3xl overflow-hidden transition-all duration-500 bg-gradient-to-br from-yellow-400 via-yellow-400 to-amber-500 text-black shadow-xl"
               >
-                <motion.div
-                  whileHover={{ y: -12, scale: 1.02 }}
-                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                  className={`relative h-full rounded-3xl p-8 shadow-xl transition-all duration-300 ${
-                    zone.primary
-                      ? `bg-gradient-to-br ${zone.gradient} hover:shadow-2xl hover:shadow-yellow-400/30`
-                      : "bg-white border-2 border-gray-200 hover:border-yellow-400 hover:shadow-2xl"
-                  }`}
-                >
-                  {/* Star Badge for Primary */}
-                  {zone.primary && (
-                    <motion.div
-                      initial={{ rotate: 0 }}
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.6 }}
-                      className="absolute -top-4 -right-4 w-12 h-12 bg-black rounded-full flex items-center justify-center shadow-lg"
-                    >
-                      <span className="text-yellow-400 text-2xl">★</span>
-                    </motion.div>
-                  )}
-
-                  {/* Department Code - Massive */}
-                  <div
-                    className={`text-[7rem] font-black leading-none mb-4 ${
-                      zone.primary ? "text-black/90" : "text-gray-900"
-                    }`}
-                  >
-                    {zone.code}
-                  </div>
-
-                  {/* Department Name */}
-                  <h3
-                    className={`text-2xl font-black mb-2 ${
-                      zone.primary ? "text-black" : "text-gray-900"
-                    }`}
-                  >
-                    {zone.name}
-                  </h3>
-
-                  {/* Description Badge */}
-                  <div
-                    className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 ${
-                      zone.primary
-                        ? "bg-black/20 text-black"
-                        : "bg-yellow-400/20 text-yellow-700"
-                    }`}
-                  >
-                    {zone.description}
-                  </div>
-
-                  {/* Cities */}
-                  <p
-                    className={`text-sm ${
-                      zone.primary ? "text-black/70" : "text-gray-500"
-                    }`}
-                  >
-                    {zone.cities}
-                  </p>
-
-                  {/* Bottom Accent Line */}
-                  <div
-                    className={`absolute bottom-0 left-0 right-0 h-1.5 rounded-b-3xl transition-all ${
-                      zone.primary
-                        ? "bg-black/30"
-                        : "bg-yellow-400 scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  />
-
-                  {/* Hover Glow */}
-                  {!zone.primary && (
-                    <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{
-                        background: 'radial-gradient(circle at 50% 0%, rgba(255, 214, 0, 0.1) 0%, transparent 70%)',
-                      }}
-                    />
-                  )}
-                </motion.div>
+                {/* Pattern overlay */}
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
+                }} />
+                <div className="text-[5rem] font-black mb-3 text-black leading-none">
+                  {zone.code}
+                </div>
+                <div className="text-2xl font-bold mb-2 text-black">
+                  {zone.name}
+                </div>
+                <div className="text-sm text-black/70">
+                  {zone.cities}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -1503,8 +1419,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="col-span-12 lg:col-span-8 lg:row-span-2 group relative overflow-hidden rounded-3xl cursor-pointer bg-black"
+              className="col-span-12 lg:col-span-8 lg:row-span-2"
             >
+              <div onClick={() => { setSelectedImageIndex(0); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
               <div className="relative h-[400px] lg:h-[600px]">
                 <Image
                   src={realisations[0]}
@@ -1569,6 +1486,7 @@ export default function Home() {
                   <span className="text-3xl font-black text-black">01</span>
                 </div>
               </div>
+              </div>
             </motion.div>
 
             {/* Side Images - Stacked */}
@@ -1577,8 +1495,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="col-span-6 lg:col-span-4 group relative overflow-hidden rounded-3xl cursor-pointer bg-black"
+              className="col-span-6 lg:col-span-4"
             >
+              <div onClick={() => { setSelectedImageIndex(1); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
               <div className="relative h-[200px] lg:h-[290px]">
                 <Image
                   src={realisations[1]}
@@ -1598,6 +1517,7 @@ export default function Home() {
                   <span className="text-lg font-black text-white">02</span>
                 </div>
               </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -1605,8 +1525,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="col-span-6 lg:col-span-4 group relative overflow-hidden rounded-3xl cursor-pointer bg-black"
+              className="col-span-6 lg:col-span-4"
             >
+              <div onClick={() => { setSelectedImageIndex(2); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
               <div className="relative h-[200px] lg:h-[290px]">
                 <Image
                   src={realisations[2]}
@@ -1626,6 +1547,7 @@ export default function Home() {
                   <span className="text-lg font-black text-white">03</span>
                 </div>
               </div>
+              </div>
             </motion.div>
 
             {/* Bottom Row */}
@@ -1634,8 +1556,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="col-span-6 lg:col-span-4 group relative overflow-hidden rounded-3xl cursor-pointer bg-black"
+              className="col-span-6 lg:col-span-4"
             >
+              <div onClick={() => { setSelectedImageIndex(3); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
               <div className="relative h-[200px] lg:h-[280px]">
                 <Image
                   src={realisations[3]}
@@ -1655,6 +1578,7 @@ export default function Home() {
                   <span className="text-lg font-black text-white">04</span>
                 </div>
               </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -1662,8 +1586,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
-              className="col-span-6 lg:col-span-4 group relative overflow-hidden rounded-3xl cursor-pointer bg-black"
+              className="col-span-6 lg:col-span-4"
             >
+              <div onClick={() => { setSelectedImageIndex(4); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
               <div className="relative h-[200px] lg:h-[280px]">
                 <Image
                   src={realisations[4]}
@@ -1683,6 +1608,7 @@ export default function Home() {
                   <span className="text-lg font-black text-white">05</span>
                 </div>
               </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -1690,8 +1616,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="col-span-12 lg:col-span-4 group relative overflow-hidden rounded-3xl cursor-pointer bg-black"
+              className="col-span-12 lg:col-span-4"
             >
+              <div onClick={() => { setSelectedImageIndex(5); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
               <div className="relative h-[200px] lg:h-[280px]">
                 <Image
                   src={realisations[5]}
@@ -1711,18 +1638,19 @@ export default function Home() {
                   <span className="text-lg font-black text-white">06</span>
                 </div>
               </div>
+              </div>
             </motion.div>
           </div>
 
-          {/* Stats + CTA Combined Section */}
+          {/* Stats Section Only */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-8 items-center"
+            className="flex justify-center"
           >
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4 max-w-2xl w-full">
               {[
                 { number: "500+", label: "Projets" },
                 { number: "15+", label: "Ans" },
@@ -1741,31 +1669,18 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            {/* CTA */}
-            <div className="lg:text-right">
-              <Link
-                href="/realisations"
-                className="group inline-flex items-center gap-4 px-10 py-6 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-2xl font-black text-lg hover:from-yellow-300 hover:to-yellow-400 transition-all shadow-2xl shadow-yellow-400/30 hover:shadow-3xl hover:-translate-y-1"
-              >
-                <span>Voir Toutes Nos Réalisations</span>
-                <svg
-                  className="w-6 h-6 group-hover:translate-x-2 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </Link>
-            </div>
           </motion.div>
         </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        images={realisations.slice(0, 6)}
+        currentIndex={selectedImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        titles={['Marquage Parking Chambéry', 'Passages piétons', 'Zones de stockage', 'Panneaux routiers', 'Marquage ludique', 'Aménagement urbain']}
+      />
+
       {/* Divider - Modern Refined Line */}
       <SectionDivider variant="masterpiece" />
       </section>
