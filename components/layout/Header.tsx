@@ -208,7 +208,7 @@ export default function Header({ hideLogo = false }: HeaderProps) {
                     transition={{ delay: 0.3 }}
                   >
                     <Link
-                      href="#contact"
+                      href="/contact"
                       className="ml-2 px-5 py-2 bg-yellow-400 text-black text-sm font-bold rounded-full hover:bg-yellow-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-yellow-400/20"
                     >
                       Devis Gratuit

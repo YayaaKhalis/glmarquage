@@ -278,170 +278,136 @@ export default function Home() {
       <SectionDivider variant="masterpiece" />
       </section>
 
-      {/* Project Workflow Timeline - Separator */}
-      <div className="relative bg-gradient-to-b from-black via-gray-900 to-black py-20 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle, rgba(251, 191, 36, 0.1) 1px, transparent 1px)`,
-              backgroundSize: '40px 40px',
-            }}
-          />
-        </div>
+      {/* Enhanced Infinite Marquee Transition */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative py-3 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden"
+      >
+        {/* Animated glow orbs */}
+        <motion.div 
+          className="absolute top-1/2 left-1/4 w-64 h-64 bg-yellow-400/20 rounded-full blur-[100px]"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-1/2 right-1/4 w-64 h-64 bg-yellow-500/15 rounded-full blur-[100px]"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.15, 0.3]
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
 
-        <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h3 className="text-yellow-400 text-sm font-bold uppercase tracking-widest mb-3">
-              Notre Processus
-            </h3>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              De la prise de contact au{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                service après-vente
-              </span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Un accompagnement complet et professionnel pour la réussite de votre projet
-            </p>
-          </motion.div>
-
-          {/* Timeline Steps */}
-          <div className="relative">
-            {/* Connecting Line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2">
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.5 }}
-                className="h-full bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20"
-                style={{ transformOrigin: 'left' }}
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-4">
-              {[
-                {
-                  number: "01",
-                  icon: "📞",
-                  title: "Premier Contact",
-                  description: "Échange sur vos besoins et votre projet"
-                },
-                {
-                  number: "02",
-                  icon: "📋",
-                  title: "Étude & Devis",
-                  description: "Analyse technique et proposition détaillée gratuite"
-                },
-                {
-                  number: "03",
-                  icon: "📅",
-                  title: "Planification",
-                  description: "Organisation du chantier et validation des délais"
-                },
-                {
-                  number: "04",
-                  icon: "🚧",
-                  title: "Réalisation",
-                  description: "Exécution des travaux par nos équipes qualifiées"
-                },
-                {
-                  number: "05",
-                  icon: "✅",
-                  title: "Contrôle Qualité",
-                  description: "Vérification et réception des travaux"
-                },
-                {
-                  number: "06",
-                  icon: "🛠️",
-                  title: "SAV & Suivi",
-                  description: "Accompagnement et garantie long terme"
-                }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.5 }}
-                  className="relative group"
-                >
-                  {/* Step Card */}
-                  <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-400/20 rounded-2xl p-6 text-center hover:border-yellow-400 transition-all duration-300 hover:-translate-y-2">
-                    {/* Step Number Badge */}
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg shadow-yellow-400/50 group-hover:scale-110 transition-transform">
-                      <span className="text-black font-black text-lg">{step.number}</span>
-                    </div>
-
-                    {/* Icon */}
-                    <div className="text-5xl mb-3 mt-6 group-hover:scale-110 transition-transform">
-                      {step.icon}
-                    </div>
-
-                    {/* Title */}
-                    <h4 className="text-white font-bold text-base mb-2 leading-tight">
-                      {step.title}
-                    </h4>
-
-                    {/* Description */}
-                    <p className="text-gray-400 text-xs leading-relaxed">
-                      {step.description}
-                    </p>
-
-                    {/* Bottom accent */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-
-                  {/* Arrow connector (desktop only) */}
-                  {index < 5 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-2 -translate-y-1/2 z-20">
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.8 + index * 0.15 }}
-                        className="w-4 h-4 bg-yellow-400 rotate-45"
-                      />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.2 }}
-            className="mt-16 text-center"
-          >
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-yellow-400 text-black rounded-full font-bold text-lg hover:bg-yellow-500 transition-all duration-300 shadow-xl shadow-yellow-400/20 hover:shadow-2xl hover:shadow-yellow-400/40"
-            >
-              <span>Démarrer votre projet</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </motion.div>
+        {/* Top border with glow */}
+        <div className="absolute top-0 left-0 right-0">
+          <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+          <div className="h-4 bg-gradient-to-b from-yellow-400/20 to-transparent" />
         </div>
         
-        {/* Divider - Modern Refined Line */}
-        <SectionDivider variant="masterpiece" />
-      </div>
+        {/* First Row - Left to Right */}
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative flex overflow-hidden mb-4"
+        >
+          <motion.div
+            className="flex shrink-0 gap-12 items-center"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex shrink-0 gap-12 items-center">
+                {[
+                  { text: "MARQUAGE AU SOL", highlight: true },
+                  { text: "—", highlight: false },
+                  { text: "SIGNALISATION ROUTIÈRE", highlight: true },
+                  { text: "—", highlight: false },
+                  { text: "MOBILIER URBAIN", highlight: true },
+                  { text: "—", highlight: false },
+                ].map((item, i) => (
+                  <span
+                    key={`${setIndex}-${i}`}
+                    className={`shrink-0 text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight ${
+                      item.highlight 
+                        ? "text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-400" 
+                        : "text-yellow-400"
+                    }`}
+                    style={item.highlight ? {
+                      backgroundSize: '200% auto',
+                      animation: 'shine 3s linear infinite',
+                    } : {}}
+                  >
+                    {item.text}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
 
+        {/* Second Row - Right to Left (opposite direction) */}
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative flex overflow-hidden"
+        >
+          <motion.div
+            className="flex shrink-0 gap-12 items-center"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex shrink-0 gap-12 items-center">
+                {[
+                  { text: "AUVERGNE-RHÔNE-ALPES", highlight: false },
+                  { text: "•", highlight: true },
+                  { text: "GENÈVE SUISSE", highlight: false },
+                  { text: "•", highlight: true },
+                  { text: "DEVIS GRATUIT 24H", highlight: false },
+                  { text: "•", highlight: true },
+                  { text: "15+ ANS D'EXPÉRIENCE", highlight: false },
+                  { text: "•", highlight: true },
+                ].map((item, i) => (
+                  <span
+                    key={`${setIndex}-${i}`}
+                    className={`shrink-0 text-lg md:text-xl font-bold uppercase tracking-widest ${
+                      item.highlight 
+                        ? "text-yellow-400" 
+                        : "text-gray-500 hover:text-yellow-400 transition-colors duration-300"
+                    }`}
+                  >
+                    {item.text}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
 
+        {/* Bottom border with glow */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="h-4 bg-gradient-to-t from-yellow-400/20 to-transparent" />
+          <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+        </div>
+      </motion.section>
 
       {/* Services - ASYMMETRIC BENTO BOX DESIGN - Bold Modern Background */}
       <section className="relative py-40 bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 overflow-hidden">
@@ -801,6 +767,470 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
+      {/* Divider - Modern Refined Line */}
+      <SectionDivider variant="masterpiece" />
+      </section>
+
+
+
+      {/* Project Workflow Timeline - Separator */}
+      <div className="relative bg-gradient-to-b from-black via-gray-900 to-black py-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle, rgba(251, 191, 36, 0.1) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px',
+            }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          {/* Header - Modern asymmetric design */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+              <div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full mb-6"
+                >
+                  <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+                  <span className="text-yellow-400 text-sm font-bold uppercase tracking-wider">Comment ça marche</span>
+                </motion.div>
+                <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.95]">
+                  6 étapes vers
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500">
+                    votre réussite
+                  </span>
+                </h2>
+              </div>
+              <p className="text-xl text-gray-400 max-w-md leading-relaxed lg:text-right">
+                Un processus simple et transparent pour concrétiser votre projet de A à Z.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Modern Timeline - Staggered Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                number: "01",
+                icon: "📞",
+                title: "Premier Contact",
+                description: "Échange sur vos besoins et votre projet de signalisation",
+                color: "from-blue-500 to-cyan-400"
+              },
+              {
+                number: "02",
+                icon: "📋",
+                title: "Étude & Devis",
+                description: "Analyse technique et proposition détaillée 100% gratuite",
+                color: "from-yellow-400 to-amber-500"
+              },
+              {
+                number: "03",
+                icon: "📅",
+                title: "Planification",
+                description: "Organisation du chantier et validation des délais",
+                color: "from-emerald-500 to-teal-400"
+              },
+              {
+                number: "04",
+                icon: "🚧",
+                title: "Réalisation",
+                description: "Exécution des travaux par nos équipes qualifiées",
+                color: "from-orange-500 to-red-400"
+              },
+              {
+                number: "05",
+                icon: "✅",
+                title: "Contrôle Qualité",
+                description: "Vérification minutieuse et réception des travaux",
+                color: "from-purple-500 to-pink-400"
+              },
+              {
+                number: "06",
+                icon: "🛠️",
+                title: "SAV & Suivi",
+                description: "Accompagnement continu et garantie long terme",
+                color: "from-yellow-400 to-yellow-600"
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className={`group relative ${index % 2 === 1 ? 'lg:mt-12' : ''}`}
+              >
+                {/* Card */}
+                <div className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-yellow-400/50 transition-all duration-500 overflow-hidden">
+                  {/* Gradient overlay on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
+                  
+                  {/* Number - Large background */}
+                  <div className="absolute -top-4 -right-4 text-[120px] font-black text-white/[0.03] leading-none select-none">
+                    {step.number}
+                  </div>
+
+                  {/* Step number badge */}
+                  <div className={`relative inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                    <span className="text-white font-black text-lg">{step.number}</span>
+                  </div>
+
+                  {/* Icon */}
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {step.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="text-xl font-black text-white mb-3 group-hover:text-yellow-400 transition-colors">
+                    {step.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                    {step.description}
+                  </p>
+
+                  {/* Bottom line accent */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${step.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Call to Action - Enhanced */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="mt-20 text-center"
+          >
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 text-black rounded-full font-black text-lg hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-300 hover:scale-105"
+            >
+              <span>Démarrer mon projet</span>
+              <div className="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+        
+        {/* Divider - Modern Refined Line */}
+        <SectionDivider variant="masterpiece" />
+      </div>
+
+      {/* Réalisations - Ultra Modern Gallery */}
+      <section
+        id="realisations"
+        className="py-32 bg-gray-100 relative overflow-hidden"
+      >
+        {/* Dot Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.15]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`,
+              backgroundSize: "30px 30px",
+            }}
+          />
+        </div>
+
+        {/* Diagonal Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-gray-200/40" />
+
+
+
+        {/* Corner Glows - Different colors */}
+        <div className="absolute top-10 right-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-black/5 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          {/* Section Header - Split Modern Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-end mb-20">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-6">
+                <svg
+                  className="w-4 h-4 text-yellow-600"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="text-black text-sm font-bold uppercase tracking-wider">
+                  Portfolio
+                </span>
+              </div>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black mb-6 leading-tight tracking-tight">
+                Nos
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                  Réalisations
+                </span>
+              </h2>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:text-right"
+            >
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
+                Découvrez nos derniers chantiers de{" "}
+                <span className="text-black font-bold">marquage routier</span>,
+                <span className="text-black font-bold"> signalisation</span> et{" "}
+                <span className="text-black font-bold">aménagement urbain</span>{" "}
+                réalisés en{" "}
+                <span className="text-yellow-600 font-bold">Savoie</span> et{" "}
+                <span className="text-yellow-600 font-bold">Haute-Savoie</span>
+              </p>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                {["Marquage au sol", "Signalisation", "Mobilier urbain"].map(
+                  (tag, i) => (
+                    <div
+                      key={i}
+                      className="px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 rounded-full text-sm font-bold text-black"
+                    >
+                      {tag}
+                    </div>
+                  )
+                )}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Advanced Bento Grid Gallery */}
+          <div className="grid grid-cols-12 gap-4 lg:gap-6 mb-16">
+            {/* Large Feature Image - Spanning */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="col-span-12 lg:col-span-8 lg:row-span-2"
+            >
+              <div onClick={() => { setSelectedImageIndex(0); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
+              <div className="relative h-[400px] lg:h-[600px]">
+                <Image
+                  src={realisations[0]}
+                  alt="Projet principal GL Marquage"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+
+                {/* Content Overlay - Simplified */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 text-white">
+                  <div className="text-sm font-bold text-yellow-400 mb-2">
+                    PARKING
+                  </div>
+                  <h3 className="text-3xl lg:text-4xl font-black">
+                    Marquage Parking
+                  </h3>
+                </div>
+              </div>
+              </div>
+            </motion.div>
+
+            {/* Side Images - Stacked */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="col-span-6 lg:col-span-4"
+            >
+              <div onClick={() => { setSelectedImageIndex(1); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
+              <div className="relative h-[200px] lg:h-[290px]">
+                <Image
+                  src={realisations[1]}
+                  alt="Réalisation GL Marquage 2"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="text-sm font-bold text-yellow-400 mb-1">
+                    VOIRIE
+                  </div>
+                  <h4 className="text-xl font-black">Passages piétons</h4>
+                </div>
+              </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="col-span-6 lg:col-span-4"
+            >
+              <div onClick={() => { setSelectedImageIndex(2); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
+              <div className="relative h-[200px] lg:h-[290px]">
+                <Image
+                  src={realisations[2]}
+                  alt="Réalisation GL Marquage 3"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="text-sm font-bold text-yellow-400 mb-1">
+                    INDUSTRIEL
+                  </div>
+                  <h4 className="text-xl font-black">Zones de stockage</h4>
+                </div>
+              </div>
+              </div>
+            </motion.div>
+
+            {/* Bottom Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="col-span-6 lg:col-span-4"
+            >
+              <div onClick={() => { setSelectedImageIndex(3); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
+              <div className="relative h-[200px] lg:h-[280px]">
+                <Image
+                  src={realisations[3]}
+                  alt="Réalisation GL Marquage 4"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="text-sm font-bold text-yellow-400 mb-1">
+                    SIGNALISATION
+                  </div>
+                  <h4 className="text-xl font-black">Panneaux routiers</h4>
+                </div>
+              </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25 }}
+              className="col-span-6 lg:col-span-4"
+            >
+              <div onClick={() => { setSelectedImageIndex(4); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
+              <div className="relative h-[200px] lg:h-[280px]">
+                <Image
+                  src={realisations[4]}
+                  alt="Réalisation GL Marquage 5"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="text-sm font-bold text-yellow-400 mb-1">
+                    DÉCORATIF
+                  </div>
+                  <h4 className="text-xl font-black">Marquage ludique</h4>
+                </div>
+              </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="col-span-12 lg:col-span-4"
+            >
+              <div onClick={() => { setSelectedImageIndex(5); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
+              <div className="relative h-[200px] lg:h-[280px]">
+                <Image
+                  src={realisations[5]}
+                  alt="Réalisation GL Marquage 6"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="text-sm font-bold text-yellow-400 mb-1">
+                    MOBILIER
+                  </div>
+                  <h4 className="text-xl font-black">Aménagement urbain</h4>
+                </div>
+              </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats Section Only */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 max-w-2xl w-full">
+              {[
+                { number: "500+", label: "Projets" },
+                { number: "15+", label: "Ans" },
+                { number: "100%", label: "Satisfait" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="text-center p-6 bg-white rounded-2xl border-2 border-gray-200 hover:border-yellow-400 transition-colors"
+                >
+                  <div className="text-4xl font-black text-yellow-600 mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-600 font-bold">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        images={realisations.slice(0, 6)}
+        currentIndex={selectedImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        titles={['Marquage Parking Chambéry', 'Passages piétons', 'Zones de stockage', 'Panneaux routiers', 'Marquage ludique', 'Aménagement urbain']}
+      />
+
       {/* Divider - Modern Refined Line */}
       <SectionDivider variant="masterpiece" />
       </section>
@@ -1323,364 +1753,6 @@ export default function Home() {
           </motion.div>
 
         </div>
-      {/* Divider - Modern Refined Line */}
-      <SectionDivider variant="masterpiece" />
-      </section>
-
-      {/* Réalisations - Ultra Modern Gallery */}
-      <section
-        id="realisations"
-        className="py-32 bg-gray-100 relative overflow-hidden"
-      >
-        {/* Dot Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.15]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`,
-              backgroundSize: "30px 30px",
-            }}
-          />
-        </div>
-
-        {/* Diagonal Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-gray-200/40" />
-
-
-
-        {/* Corner Glows - Different colors */}
-        <div className="absolute top-10 right-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-black/5 rounded-full blur-3xl" />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-          {/* Section Header - Split Modern Layout */}
-          <div className="grid lg:grid-cols-2 gap-12 items-end mb-20">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-6">
-                <svg
-                  className="w-4 h-4 text-yellow-600"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span className="text-black text-sm font-bold uppercase tracking-wider">
-                  Portfolio
-                </span>
-              </div>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black mb-6 leading-tight tracking-tight">
-                Nos
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                  Réalisations
-                </span>
-              </h2>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="lg:text-right"
-            >
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
-                Découvrez nos derniers chantiers de{" "}
-                <span className="text-black font-bold">marquage routier</span>,
-                <span className="text-black font-bold"> signalisation</span> et{" "}
-                <span className="text-black font-bold">aménagement urbain</span>{" "}
-                réalisés en{" "}
-                <span className="text-yellow-600 font-bold">Savoie</span> et{" "}
-                <span className="text-yellow-600 font-bold">Haute-Savoie</span>
-              </p>
-              <div className="flex flex-wrap gap-3 lg:justify-end">
-                {["Marquage au sol", "Signalisation", "Mobilier urbain"].map(
-                  (tag, i) => (
-                    <div
-                      key={i}
-                      className="px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 rounded-full text-sm font-bold text-black"
-                    >
-                      {tag}
-                    </div>
-                  )
-                )}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Advanced Bento Grid Gallery */}
-          <div className="grid grid-cols-12 gap-4 lg:gap-6 mb-16">
-            {/* Large Feature Image - Spanning */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="col-span-12 lg:col-span-8 lg:row-span-2"
-            >
-              <div onClick={() => { setSelectedImageIndex(0); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
-              <div className="relative h-[400px] lg:h-[600px]">
-                <Image
-                  src={realisations[0]}
-                  alt="Projet principal GL Marquage"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-
-                {/* Content Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 text-white transform transition-transform duration-300 group-hover:translate-y-0">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black rounded-full text-sm font-black mb-4">
-                    <span>⭐</span>
-                    <span>PROJET PHARE</span>
-                  </div>
-                  <h3 className="text-3xl lg:text-5xl font-black mb-3 group-hover:text-yellow-400 transition-colors">
-                    Marquage Parking Chambéry
-                  </h3>
-                  <p className="text-lg text-white/80 mb-4">
-                    Signalisation complète • 2000m² • Délai express 48h
-                  </p>
-                  <div className="flex items-center gap-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                      </svg>
-                      <span>Chambéry (73)</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      <span>Janvier 2024</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Number Badge */}
-                <div className="absolute top-6 right-6 w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <span className="text-3xl font-black text-black">01</span>
-                </div>
-              </div>
-              </div>
-            </motion.div>
-
-            {/* Side Images - Stacked */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="col-span-6 lg:col-span-4"
-            >
-              <div onClick={() => { setSelectedImageIndex(1); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
-              <div className="relative h-[200px] lg:h-[290px]">
-                <Image
-                  src={realisations[1]}
-                  alt="Réalisation GL Marquage 2"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-sm font-bold text-yellow-400 mb-1">
-                    VOIRIE
-                  </div>
-                  <h4 className="text-xl font-black">Passages piétons</h4>
-                </div>
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                  <span className="text-lg font-black text-white">02</span>
-                </div>
-              </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 }}
-              className="col-span-6 lg:col-span-4"
-            >
-              <div onClick={() => { setSelectedImageIndex(2); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
-              <div className="relative h-[200px] lg:h-[290px]">
-                <Image
-                  src={realisations[2]}
-                  alt="Réalisation GL Marquage 3"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-sm font-bold text-yellow-400 mb-1">
-                    INDUSTRIEL
-                  </div>
-                  <h4 className="text-xl font-black">Zones de stockage</h4>
-                </div>
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                  <span className="text-lg font-black text-white">03</span>
-                </div>
-              </div>
-              </div>
-            </motion.div>
-
-            {/* Bottom Row */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="col-span-6 lg:col-span-4"
-            >
-              <div onClick={() => { setSelectedImageIndex(3); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
-              <div className="relative h-[200px] lg:h-[280px]">
-                <Image
-                  src={realisations[3]}
-                  alt="Réalisation GL Marquage 4"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-sm font-bold text-yellow-400 mb-1">
-                    SIGNALISATION
-                  </div>
-                  <h4 className="text-xl font-black">Panneaux routiers</h4>
-                </div>
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                  <span className="text-lg font-black text-white">04</span>
-                </div>
-              </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.25 }}
-              className="col-span-6 lg:col-span-4"
-            >
-              <div onClick={() => { setSelectedImageIndex(4); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
-              <div className="relative h-[200px] lg:h-[280px]">
-                <Image
-                  src={realisations[4]}
-                  alt="Réalisation GL Marquage 5"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-sm font-bold text-yellow-400 mb-1">
-                    DÉCORATIF
-                  </div>
-                  <h4 className="text-xl font-black">Marquage ludique</h4>
-                </div>
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                  <span className="text-lg font-black text-white">05</span>
-                </div>
-              </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="col-span-12 lg:col-span-4"
-            >
-              <div onClick={() => { setSelectedImageIndex(5); setLightboxOpen(true); }} className="group block relative overflow-hidden rounded-3xl cursor-pointer bg-black h-full">
-              <div className="relative h-[200px] lg:h-[280px]">
-                <Image
-                  src={realisations[5]}
-                  alt="Réalisation GL Marquage 6"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-sm font-bold text-yellow-400 mb-1">
-                    MOBILIER
-                  </div>
-                  <h4 className="text-xl font-black">Aménagement urbain</h4>
-                </div>
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                  <span className="text-lg font-black text-white">06</span>
-                </div>
-              </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Stats Section Only */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
-          >
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 max-w-2xl w-full">
-              {[
-                { number: "500+", label: "Projets" },
-                { number: "15+", label: "Ans" },
-                { number: "100%", label: "Satisfait" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="text-center p-6 bg-white rounded-2xl border-2 border-gray-200 hover:border-yellow-400 transition-colors"
-                >
-                  <div className="text-4xl font-black text-yellow-600 mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600 font-bold">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-      {/* Lightbox */}
-      <Lightbox
-        images={realisations.slice(0, 6)}
-        currentIndex={selectedImageIndex}
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        titles={['Marquage Parking Chambéry', 'Passages piétons', 'Zones de stockage', 'Panneaux routiers', 'Marquage ludique', 'Aménagement urbain']}
-      />
-
       {/* Divider - Modern Refined Line */}
       <SectionDivider variant="masterpiece" />
       </section>

@@ -263,7 +263,7 @@ export default function Contact() {
                   
                   {/* Form header */}
                   <div className="relative text-center mb-8">
-                    <h3 className="text-2xl font-black text-gray-900">Demandez votre devis</h3>
+                    <h3 className="text-2xl font-black text-gray-900">Envoyez-nous un message</h3>
                   </div>
                   
                   {/* Form fields */}
