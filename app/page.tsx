@@ -1192,34 +1192,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Stats Section Only */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
-          >
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 max-w-2xl w-full">
-              {[
-                { number: "500+", label: "Projets" },
-                { number: "15+", label: "Ans" },
-                { number: "100%", label: "Satisfait" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="text-center p-6 bg-white rounded-2xl border-2 border-gray-200 hover:border-yellow-400 transition-colors"
-                >
-                  <div className="text-4xl font-black text-yellow-600 mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600 font-bold">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
 
       {/* Lightbox */}

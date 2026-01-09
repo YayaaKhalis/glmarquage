@@ -26,7 +26,7 @@ export default function HeroCinematic() {
   }, []);
 
   // Typewriter effect
-  const fullText = "Expert en signalisation routière, marquage au sol et mobilier urbain pour professionnels et collectivités en Savoie et Rhône-Alpes.";
+  const fullText = "Expert en signalisation routière, marquage au sol et mobilier urbain pour professionnels et collectivités en région Auvergne-Rhône-Alpes et Genève.";
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -106,8 +106,8 @@ export default function HeroCinematic() {
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-6xl md:text-7xl lg:text-8xl xl:text-9xl mt-1">
                     en marquage
                   </span>
-                  <span className="block text-white/70 text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-1">
-                    au sol
+                  <span className="block text-white/70 text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-3">
+                    Signalisation et mobilier urbain
                   </span>
                 </motion.h1>
               </div>
@@ -211,7 +211,7 @@ export default function HeroCinematic() {
                 {[
                   { icon: '🏆', text: 'Certifié NF', color: 'yellow' },
                   { icon: '⚡', text: 'Devis 24h', color: 'yellow' },
-                  { icon: '✓', text: 'Garantie qualité', color: 'yellow' },
+                  { icon: '✅', text: 'Garantie qualité', color: 'yellow' },
                 ].map((item, i) => (
                   <motion.div
                     key={i}

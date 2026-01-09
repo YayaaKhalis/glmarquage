@@ -131,31 +131,7 @@ export default function Lightbox({
               </>
             )}
 
-            {/* Barre d'outils en bas */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full"
-            >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsZoomed(!isZoomed);
-                }}
-                className="p-2 text-white hover:text-yellow-400 transition-colors"
-              >
-                {isZoomed ? <ZoomOut className="w-5 h-5" /> : <ZoomIn className="w-5 h-5" />}
-              </button>
-              <div className="w-px h-6 bg-white/20" />
-              <a
-                href={images[currentImageIndex]}
-                download
-                onClick={(e) => e.stopPropagation()}
-                className="p-2 text-white hover:text-yellow-400 transition-colors"
-              >
-                <Download className="w-5 h-5" />
-              </a>
-            </motion.div>
+
 
             {/* Image principale avec animations */}
             <motion.div
@@ -185,27 +161,7 @@ export default function Lightbox({
               </div>
             </motion.div>
 
-            {/* Informations de l'image */}
-            {(titles?.[currentImageIndex] || descriptions?.[currentImageIndex]) && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="absolute bottom-24 left-1/2 -translate-x-1/2 max-w-2xl w-full px-6 text-center"
-              >
-                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-2xl">
-                  {titles?.[currentImageIndex] && (
-                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2 drop-shadow-lg">
-                      {titles[currentImageIndex]}
-                    </h3>
-                  )}
-                  {descriptions?.[currentImageIndex] && (
-                    <p className="text-white font-semibold text-sm md:text-base drop-shadow-md">
-                      {descriptions[currentImageIndex]}
-                    </p>
-                  )}
-                </div>
-              </motion.div>
-            )}
+
 
             {/* Thumbnails en bas (optionnel) */}
             {images.length > 1 && images.length <= 10 && (
